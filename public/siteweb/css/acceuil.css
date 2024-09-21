@@ -1,0 +1,186 @@
+.center {
+    width: 100%;
+  }
+
+  .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    /* Centrer les éléments */
+  }
+
+  .navbar-nav>li {
+    display: inline-block;
+    position: relative;
+    margin: 0 15px;
+    /* Ajustez selon vos besoins */
+  }
+
+  .section-background {
+    background-image: url('../images/j4r-echafaudage-slide1.jpg');
+    /* Remplacez par le chemin de votre image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    /* Couleur du texte en blanc pour la lisibilité */
+
+  }
+
+  .navbar-nav>li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    /* Ajustez selon vos besoins */
+    top: 15%;
+    /* Positionnement pour centrer verticalement */
+    height: 70%;
+    /* Hauteur de la barre */
+    border-right: 1px solid #dad7d7;
+    /* Couleur de la barre */
+  }
+
+  .navbar-nav>li a {
+    text-decoration: none;
+    color: #000;
+    padding: 0 10px;
+  }
+
+  .navbar-nav>li.active a {
+    color: #007bff;
+    /* Couleur pour l'élément actif */
+  }
+
+  /* Media query pour enlever les barres verticales en mode responsive */
+  @media (max-width: 768px) {
+    .navbar-nav>li:not(:last-child)::after {
+      content: none;
+    }
+  }
+
+
+
+
+
+  .container_counter {
+    display: flex;
+    gap: 50px;
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item {
+    text-align: center;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .item img {
+    width: 50px;
+    height: auto;
+    transition: transform 0.3s;
+  }
+
+  .item:hover img {
+    transform: scale(1.2);
+  }
+
+  .item h2 {
+    margin: 10px 0 5px;
+    font-size: 2em;
+    color: #333;
+  }
+
+  .item p {
+    margin: 0;
+    font-size: 1em;
+    color: #777;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+
+    }
+
+    100% {
+      transform: translateX(calc(-250px*7));
+    }
+  }
+
+  .slider {
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+  }
+
+  .slider .slide-track {
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: calc(250px*14);
+
+  }
+
+  .slider .slide {
+
+    height: 100px;
+    width: 250px
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .header_area {
+    background-color: rgb(252, 252, 252);
+    /* Use rgba for the background color with transparency */
+
+  }
+
+
+
+  .navbar {
+    width: 96%;
+    justify-content: center;
+  }
+
+  .centered-nav {
+    justify-content: center;
+    width: 96%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .home_logo img {
+
+    margin-left: 15vmin;
+    width: 79%;
+  }
+
+  .main_title h2 {
+    font-size: 25px;
+    padding-top: 3%;
+  }
+
+  .slider_text_box.center .slider_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    /* Adjust this value to control vertical spacing */
+  }

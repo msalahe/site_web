@@ -1,0 +1,207 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<style>
+    .project-image-list {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        gap: 10px;
+    }
+
+    .project-image-item {
+        position: relative;
+        width: 150px;
+        /* Fixed width for all images */
+        height: 150px;
+        /* Fixed height for all images */
+    }
+
+    .image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Ensures the image covers the container */
+    }
+
+    .delete-icon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .delete-icon:hover {
+        background-color: darkred;
+    }
+</style>
+<div class="col-12 col-xl-12">
+    <div class="card">
+        <div class="card-body p-4">
+            <h2>Modifier le projet</h2>
+            {{ form_start(form, {'attr': {'class': 'row g-3', 'enctype': 'multipart/form-data' }}
+            ) }}
+
+            <div class="col-md-12">
+                {{ form_label(form.name, 'Nom Projet', {'label_attr': {'class': 'form-label' }}
+                ) }}
+                <div class="position-relative input-icon">
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control', 'id': 'input13', 'placeholder': 'Nom
+                    Projet' }}
+                    ) }}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label' }}
+                ) }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control', 'id': 'input23', 'rows': 3 }}
+                ) }}
+            </div>
+            <div class="col-md-12">
+                <span>Ajouter des images</span>
+                        <input type="file" id="projet_images" name="projet[images][]" multiple="multiple" class="form-control" accept="image/*">
+                   
+                
+            </div>
+            <div class="col-md-12">
+                {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label' }}
+                ) }}
+                {{ form_widget(form.type, {'attr': {'class': 'form-control' }}
+                ) }}
+            </div>
+
+          
+
+
+            <div class="col-md-12">
+                <div class="d-md-flex d-grid align-items-center gap-3">
+                    <button type="submit" class="btn btn-primary px-4">
+                        Enregistrer les modifications
+                    </button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ModalSuppression" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-danger">
+            <div class="modal-header">
+                <h5 class="modal-title text-white">
+                    Supprimer l'image
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-white">
+                <p>
+                    Confirmez-vous la suppression ?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                    Fermer
+                </button>
+                <div id="footer-affretement-supprimer" style="display: none;">
+                    <button class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span class="visually-hidden">
+                            Loading...
+                        </span>
+                    </button>
+                </div>
+                <button type="button" class="btn btn-dark" id="supprimerType" onclick="supprimerImage()">
+                    Confirmer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="project-card">
+        <div class="project-card-body">
+            <label for="projet_images">Images actuelles</label>
+            <ul class="project-image-list">
+                {% for image in projet.images %}
+                <li class="project-image-item">
+                    <div class="image-wrapper">
+                        <img src="{{ asset('uploads/images/' ~ image.filename) }}" alt="Image du projet"
+                            class="project-image" />
+                        <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#ModalSuppression"
+                            onclick="supprimer({{ image.id }})" title="supprimer l'image">&times;</span>
+                    </div>
+                </li>
+                {% else %}
+                <li>Aucune image disponible pour ce projet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    let image = 0;
+    function supprimer(id) {
+        image = id;
+    }    
+    function supprimerImage() {
+        $('#supprimerType').hide();
+        $('#footer-affretement-supprimer').show();
+        $.ajax({
+            url: '/delete/image/' + image,
+            method: 'POST', // or 'GET' based on your server-side handling
+            success: function(response) {
+                if (response.success) {
+                   success_noti(response.message);
+                } else {
+                    success_noti(response.message);
+                }
+                $('#supprimerType').show();
+                $('#footer-affretement-supprimer').hide();
+                $('#ModalSuppression').modal('hide');
+                location.reload()
+            },
+            error: function(xhr, status, error) {
+                //error_noti('Une erreur s\'est produite : ' + error);
+                $('#ModalSuppression').modal('hide');
+                $('#supprimerType').show();
+                $('#footer-affretement-supprimer').hide();
+                location.reload()
+
+            }
+            
+            
+        });
+
+    }
+</script>
+
+
+{% endblock %}

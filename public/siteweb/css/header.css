@@ -1,0 +1,64 @@
+.navbar {
+    width: 100%;
+    justify-content: center;
+}
+
+.centered-nav {
+    justify-content: center;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.center {
+    width: 100%;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    /* Centrer les éléments */
+}
+
+.navbar-nav>li {
+    display: inline-block;
+    position: relative;
+    margin: 0 15px;
+    /* Ajustez selon vos besoins */
+}
+
+
+
+.navbar-nav>li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    /* Ajustez selon vos besoins */
+    top: 15%;
+    /* Positionnement pour centrer verticalement */
+    height: 70%;
+    /* Hauteur de la barre */
+    border-right: 1px solid #dad7d7;
+    /* Couleur de la barre */
+}
+
+.navbar-nav>li a {
+    text-decoration: none;
+    color: #000;
+    padding: 0 10px;
+}
+
+.navbar-nav>li.active a {
+    color: #007bff;
+    /* Couleur pour l'élément actif */
+}
+
+/* Media query pour enlever les barres verticales en mode responsive */
+@media (max-width: 768px) {
+    .navbar-nav>li:not(:last-child)::after {
+        content: none;
+    }
+}

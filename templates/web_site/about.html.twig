@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="{{ asset('siteweb/images/j4r_logo.png') }} " type="image/x-icon">
+    <title>J4R Échafaudages – Specialisé dans le transport, la location et le montage d’échafaudages </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('siteweb/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/linearicons/style.css')}}" />
+
+    <!-- Rev slider css -->
+    <link href="{{ asset('siteweb/vendors/revolution/css/settings.css')}}" rel="stylesheet" />
+    <link href="{{ asset('siteweb/vendors/revolution/css/layers.css')}}" rel="stylesheet" />
+    <link href="{{ asset('siteweb/vendors/revolution/css/navigation.css')}}" rel="stylesheet" />
+
+    <!-- Extra Plugin CSS -->
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/animate-css/animate.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/slick/slick.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/popup/magnific-popup.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/splitting/splitting.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/animsition-preloader/css/animsition.min.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('siteweb/css/style.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/header.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/responsive.css')}}" />
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #fff;
+            padding: 20px;
+
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            display: block;
+
+            font-size: 0.9em;
+            color: #555;
+            text-align: justify;
+
+        }
+
+        .grid-item.active .content {
+            display: block;
+        }
+
+        .grid-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .justify {
+            text-align: justify;
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-size: 6px;
+            /* Adjust the font size as needed */
+            color: #000;
+            /* Change the text color if needed */
+        }
+
+        .services {
+            text-align: center;
+        }
+
+        .quote-right {
+            margin-top: 10%;
+        }
+
+        .menu_dark+section {
+            margin-top: 10px;
+        }
+
+        .guillement-fermant {
+            position: absolute;
+            font-size: 140px;
+            color: #28c0ef;
+            font-style: normal;
+            font-family: "swanse";
+            margin-top: 50px;
+
+        }
+
+        .container-valeur {
+            display: flex;
+            width: 80%;
+            margin-left: 12%;
+
+        }
+
+        .value-box {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            width: 30%;
+        }
+
+        .value-box img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+
+        }
+
+        .value-box h3 {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #333;
+            font-family: Montserrat;
+
+        }
+
+        .value-box p {
+            font-size: 0.9em;
+            color: #666;
+            text-align: left;
+            text-align: justify;
+            font-family: Montserrat;
+
+
+        }
+
+        .navbar {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .centered-nav {
+            justify-content: center;
+            width: 100%;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .center {
+            width: 100%;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            /* Centrer les éléments */
+        }
+
+        .navbar-nav>li {
+            display: inline-block;
+            position: relative;
+            margin: 0 15px;
+            /* Ajustez selon vos besoins */
+        }
+
+        .section-background {
+            background-image: url('{{ asset('siteweb/images/j4r-echafaudage-slide1.jpg')}}');
+            /* Remplacez par le chemin de votre image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            /* Couleur du texte en blanc pour la lisibilité */
+
+        }
+
+        .navbar-nav>li:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: -15px;
+            /* Ajustez selon vos besoins */
+            top: 15%;
+            /* Positionnement pour centrer verticalement */
+            height: 70%;
+            /* Hauteur de la barre */
+            border-right: 1px solid #dad7d7;
+            /* Couleur de la barre */
+        }
+
+        .navbar-nav>li a {
+            text-decoration: none;
+            color: #000;
+            padding: 0 10px;
+        }
+
+        .navbar-nav>li.active a {
+            color: #007bff;
+            /* Couleur pour l'élément actif */
+        }
+
+        /* Media query pour enlever les barres verticales en mode responsive */
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .content .left-column {
+            flex: 2;
+            min-width: 250px;
+            margin-right: 20px;
+            line-height: 0.5;
+            padding-top: 3%;
+            /* Adjust this value as needed */
+        }
+
+        .content .left-column p {
+
+            line-height: 2;
+            /* Adjust this value as needed */
+        }
+
+
+
+        .content .right-column {
+            flex: 1;
+            min-width: 250px;
+            padding-left: 5%;
+        }
+
+        .right-column ul {
+            list-style: none;
+            padding: 0;
+            line-height: 2;
+
+        }
+
+        .home_logo img {
+
+            width: 80%;
+            margin-left: 18vmin;
+            margin-top: 2vmax;
+
+        }
+
+
+        .right-column ul li::before {
+            content: "•";
+            color: #333;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .right-column h3 {
+            margin-top: 0;
+            font-family: Montserrat;
+
+        }
+
+        .content p,
+        .right-column li {
+            margin-bottom: 10px;
+            font-family: Montserrat;
+            line-height: 1.5;
+
+
+        }
+
+
+
+
+
+        .citation {
+            background-image: url('{{ asset('siteweb/images/j4r-echafaudage-slide1.jpg')}}');
+            /* Remplacez par le chemin de votre image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+
+            /* Couleur du texte en blanc pour la lisibilité */
+
+        }
+
+        .container_about {
+            width: 100%;
+            margin-top: 2%;
+        }
+
+        .container_valeur_principale {
+            width: 100%;
+        }
+
+        .services {
+            padding: 8%;
+            text-align: center;
+            font-size: 10px;
+
+        }
+
+        .services span {
+            font-family: "Montserrat", sans-serif;
+            color: white;
+        }
+
+        .container_description {
+            max-width: 90%;
+            margin: 0 auto;
+
+        }
+
+        .services_titre {
+            padding: 4%;
+            text-align: center;
+            font-size: 10px;
+            font-family: "Montserrat", sans-serif;
+
+
+        }
+
+        .bgImageBlue {
+            background-image: url('{{ asset('siteweb/images/j4r-echafaudage-slide1.jpg')}}');
+            /* Remplacez par le chemin de votre image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            width: 100%;
+
+
+        }
+
+        .color_white {
+            color: white;
+        }
+
+        .container_service {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .card_service {
+            text-align: center;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .icon img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .header_service {
+            background-color: #f5f5f5;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+
+        }
+
+        .content_service {
+            display: none;
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: "Montserrat", sans-serif;
+
+        }
+
+        .main_title h2 {
+            color: white;
+        }
+
+        .main_title {
+            margin-bottom: 20px;
+        }
+
+        .citation h2 {
+            font-size: 30px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav>li:not(:last-child)::after {
+                content: none;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+
+            .content .left-column {
+                margin-right: 0;
+            }
+
+            .container_about {
+                padding-top: 15%;
+            }
+
+            .container-valeur {
+                display: flex;
+                flex-direction: column;
+                margin-left: 9%;
+            }
+
+            .value-box {
+                background-color: #fff;
+                padding: 20px;
+                margin: 10px;
+                text-align: center;
+                width: 100%;
+            }
+
+
+
+
+
+            .container_service {
+                flex-direction: column;
+                display: flex;
+
+            }
+
+            .card_service {
+                width: 100%;
+            }
+
+            .services_titre {
+                padding: 7%;
+
+
+
+            }
+
+            .container {
+
+                padding: 0px;
+            }
+
+        }
+
+        .pt-174 {
+            padding-top: 1px;
+            padding-bottom: 1px
+        }
+
+        @media (max-width: 480px) {
+            .card_service {
+                width: 100%;
+                text-align: center;
+                /* if needed, or keep it the same */
+                margin-bottom: 10px;
+                /* if needed, or keep it the same */
+            }
+
+            .container_service {
+                flex-direction: column;
+                display: flex;
+
+            }
+
+
+
+            .services_titre {
+                padding: 7%;
+
+
+
+            }
+
+            .header-line {
+                height: 0px;
+                border-top: 0px
+            }
+
+            hr:not([size]) {
+                height: 0px;
+            }
+
+            .p-170-top {
+                padding-top: 0px;
+            }
+        }
+
+       
+      
+    </style>
+    <link rel="stylesheet" href="{{ asset('siteweb/css/footer.css')}}" />
+
+</head>
+
+<body data-scroll-animation="true" class="loading">
+    <div class="animsition">
+        <div class="body_wrapper">
+
+            <!--================Header Area =================-->
+            <header class="header_area home_page">
+                <div class="home_logo">
+                    <a href="{{ path('app_web_site') }}"><img src="{{ asset('siteweb/images/logo.png') }} " alt=""></a>
+                </div>
+                <div class="main_menu">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="{{ path('app_web_site') }}">
+                                <img src="{{ asset('siteweb/images/logo.png') }} " alt="" />
+                                <img src="{{ asset('siteweb/images/j4r_logo.png') }} " alt="" />
+                            </a>
+                            <button class="navbar-toggler " type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="nav navbar-nav centered-nav">
+                                    <li class="">
+                                        <a href="{{ path('app_web_site') }}"><i class="fas fa-home"></i></a>
+                                    </li>
+                                    <li class="active"><a href="{{ path('app_web_site_realisations') }}">J4R ÉCHAFAUDAGES</a></li>
+                                    <li class="dropdown submenu">
+                                        <a href="{{ path('app_web_site_realisations') }}">RÉALISATIONS</a>
+                                    </li>
+                                    <li><a href="{{ path('app_web_site_realisations') }}">CONTACT</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <hr class="header-line">
+
+                </div>
+
+            </header>
+            <!--================End Header Area =================-->
+            <!--================About Image Area =================-->
+
+            <!--================End About Image Area =================-->
+
+            <!--================Design Area =================-->
+            <section class="p-170-top">
+                <div class="container_about">
+                    <div class="row">
+                        <div class="main_title citation">
+                            <h2 class="wow services" data-splitting><span class="color">Chaque projet est un nouveau
+                                    défi et s’inscrit
+                                    dans une démarche globale de qualité
+                                    et d’amélioration continue.</h2>
+                        </div>
+                    </div>
+                    <div class="exp_design_text pt-174">
+
+                        <div class="container_description">
+                            <div class="main_title experience_design_area">
+
+                            </div>
+                            <div class="content">
+                                <div class="left-column">
+                                    <p>Créée en 2013, la société J4R échafaudage est spécialisée dans <strong>l’étude,
+                                            la location, le montage, le transport et la maintenance de tous types
+                                            d’échafaudages</strong>.</p>
+                                    <p>Notre entreprise intervient sur <strong>toute la région Ile de France</strong>
+                                        avec une prédisposition pour les chantiers dits complexes </p>
+                                    <p>Installées en Seine et Marne (77) depuis sa création, nos équipes ont la
+                                        particularité d’œuvrer dans l’un des départements les plus rigoureux de France
+                                        en matière de protections collectives.</p>
+                                    <p>La société J4R a débuté son activité sur des <strong>chantiers de
+                                            constructions</strong> et a progressivement développé son expertise pour
+                                        intervenir aujourd’hui également sur des marchés de <strong>rénovations, de
+                                            restaurations, d’industries</strong></p>
+                                    <p>Gérant en moyenne une soixantaine de chantiers par mois en Île De France, notre
+                                        objectif premier est <strong>d’assurer la sécurité des utilisateurs et de
+                                            faciliter la mise en œuvre de leurs activités</strong></p>
+                                </div>
+                                <div class="right-column">
+                                    <h4>Qui sont nos clients ?</h4>
+                                    <ul>
+                                        <li>Des maîtres d’ouvrages privés et publics,</li>
+                                        <li>Des entreprises (gros-œuvre, charpente, couverture, ravalement, menuiserie,
+                                            serrurerie ...),</li>
+                                        <li>Des professionnels (publicitaires, exposants, ...)</li>
+                                        <li>De l’industrie,</li>
+                                        <li>Des particuliers, ...</li>
+                                    </ul>
+                                    <h4>Quelles solutions utilisons-nous ?</h4>
+                                    <ul>
+                                        <li>Échafaudages multidirectionnels fixes ou roulants</li>
+                                        <li>Protections couvreurs,</li>
+                                        <li>Recettes à matériaux,</li>
+                                        <li>Escaliers et sapines d’accès</li>
+                                        <li>Échafaudage type parapluie,</li>
+                                        <li>Plateformes de travails et d’accès, ...</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--================End Design Area =================-->
+
+            <!--================Feature Items Area =================-->
+            <!-- <section class="feature_area p-170">
+                <div class="container">
+                    <div class="main_title">
+                        <h2 class="wow services" data-splitting><span class="color">NOS</span> SERVICES </h2>
+                    </div>
+                    
+
+                </div>
+            </section>-->
+
+
+            <section class="feature_area p-174">
+                <div class="container_valeur_principale">
+                    <div class="main_title bgImageBlue">
+                        <h2 class="wow services_titre" data-splitting><span class="color">NOS</span> SERVICES</h2>
+                    </div>
+
+                    <div class="container_service">
+                        <div class="card_service" id="card_service1">
+                            <div class="icon">
+                                <img src="{{ asset('siteweb/images/icons/bureau-icon.png') }} " alt="Bureau d'étude">
+                            </div>
+                            <div class="header_service" onclick="toggleContent('content1', 'toggle1')">
+                                <span id="toggle1">+</span> BUREAU D'ETUDE
+                            </div>
+                            <div class="content_service" id="content1">
+                                <p>La première étape consiste en l’étude du projet.</p>
+                                <p>Nous disposons d’<strong>un bureau d’étude en interne</strong> qui commencera par
+                                    analyser vos besoins et définir les critères de faisabilité.</p>
+                                <p>En collaboration, bureau d’étude et chargés d’affaires, aidés <strong>d’outils de
+                                        dernière génération</strong>, veillerons à vous apporter des <strong>solutions
+                                        personnalisées</strong>.</p>
+                                <p>Cette compétence interne nous permet de répondre <strong>avec réactivité à vos
+                                        demandes</strong>.</p>
+                                <p>Pour les projets le nécessitant, nous pouvons également nous appuyer sur les
+                                    compétences de bureaux d’études externes partenaires pour valider nos études et
+                                    notes de calcul.</p>
+                            </div>
+                        </div>
+                        <div class="card_service" id="card_service2">
+                            <div class="icon">
+                                <img src="{{ asset('siteweb/images/icons/plan-icon.png') }} " alt="Plan">
+                            </div>
+                            <div class="header_service" onclick="toggleContent('content2', 'toggle2')">
+                                <span id="toggle2">+</span> PLAN
+                            </div>
+                            <div class="content_service" id="content2">
+                                <p>Les plans d’études, de dimensionnement et de réalisations sont réalisés en interne
+                                    par le chargé d’affaires qui aura la charge du chantier. Ce travail de plan lui
+                                    permet de connaître parfaitement le chantier et ses contraintes et ainsi de
+                                    <strong>s’assurer de l’adéquation des plans d’échafaudages avec les ouvrages à
+                                        réaliser </strong> par
+                                    les différents corps d’état utilisateurs.
+                                </p>
+                                <p>Cette compétence en interne nous permet de répondre avec réactivité aux demandes post
+                                    réalisations, mais également aux éventuels aléas chantiers.</p>
+
+                            </div>
+                        </div>
+                        <div class="card_service" id="card_service3">
+                            <div class="icon">
+                                <img src="{{ asset('siteweb/images/icons/location-icon.png') }} " alt="Location">
+                            </div>
+                            <div class="header_service" onclick="toggleContent('content3', 'toggle3')">
+                                <span id="toggle3">+</span> LOCATION
+                            </div>
+                            <div class="content_service" id="content3">
+                                <p>Les plans réalisés en amont nous permettent de définir avec précision le matériel
+                                    nécessaire à la réalisation du chantier.</p>
+                                <p>L’expertise de nos chargés d’affaires a un rôle déterminant, car elle permet de
+                                    définir la
+                                    <strong>stratégie permettant d’optimiser les quantités de matériels immobilisés et
+                                        ainsi le coût de location pour le client.</strong> Notre culture client nous
+                                    amène à veiller rigoureusement à l’optimisation de ce poste tout en assurant notre
+                                    objectif premier : la sécurité.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card_service" id="card_service4">
+                            <div class="icon">
+                                <img src="{{ asset('siteweb/images/icons/gestion-icon.png') }} " alt="Gestion">
+                            </div>
+                            <div class="header_service" onclick="toggleContent('content4', 'toggle4')">
+                                <span id="toggle4">+</span> MONTAGE
+                            </div>
+                            <div class="content_service" id="content4">
+                                <p>L’utilisation de matériels respectant les plus hautes normes de rigidité et
+                                    d’efficacité n’est, de fait, pas toujours suffisante. La sécurité des utilisateurs
+                                    étant notre engagement premier, le montage est réalisé par
+                                    <strong>des équipes expérimentées et régulièrement formées aux dernières normes de
+                                        sécurité.</strong>
+                                </p>
+                                <p>Nos équipes veilleront à ce que le montage soit
+                                    <strong>réalisé dans les durées annoncées</strong> dans un souci constant de
+                                    <strong> respect des engagements.</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card_service" id="card_service5">
+                            <div class="icon">
+                                <img src="{{ asset('siteweb/images/icons/maintenance-icon.png') }} " alt="Maintenance">
+                            </div>
+                            <div class="header_service" onclick="toggleContent('content5', 'toggle5')">
+                                <span id="toggle5">+</span> TRANSPORT LOGISTIQUE
+                            </div>
+                            <div class="content_service" id="content5">
+                                <p>Nos transporteurs sont
+                                    <strong>spécialisés dans le transport et la manutention</strong>
+                                    de matériels d’échafaudages. L’ensemble de nos camions sont équipés de
+                                    <strong>grue auxiliaire</strong> ce qui permet de maintenir une autonomie dans les
+                                    différentes phases d’entreposage du matériel sur chantier et une nouvelle fois
+                                    <strong>accroître notre rapidité d’exécution.</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card_service" id="card_service6">
+                            <div class="icon">
+                                <img src="{{ asset('siteweb/images/icons/support-icon.png') }} " alt="Support">
+                            </div>
+                            <div class="header_service" onclick="toggleContent('content6', 'toggle6')">
+                                <span id="toggle6">+</span> PROCÈS-VERBAL DE RÉCEPTION
+                            </div>
+                            <div class="content_service" id="content6">
+                                <p>Nous validons tous nos montages par un Procès-Verbal de réception de travaux
+                                    d’échafaudages et un
+                                    <strong>bulletin d’adéquation</strong> validant la coordination entre les différents
+                                    corps-d ’état utilisateurs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <section class="feature_area">
+                <div class="container_valeur_principale">
+                    <div class="main_title bgImageBlue">
+                        <h2 class="wow services_titre" data-splitting><span class="color">NOS</span> VALEURS</h2>
+                    </div>
+                    <div class="container-valeur">
+                        <div class="value-box">
+                            <img src="{{ asset('siteweb/images/J4R_sécurité-150x150.png') }} " alt="Sécurité">
+                            <h3>La sécurité, notre valeur première</h3>
+                            <p>Notre métier consiste à assurer <strong>la sécurité</strong> des
+                                utilisateurs de nos
+                                ouvrages, mais également celle de nos monteurs. Afin de répondre à ces objectifs, nous
+                                travaillons exclusivement avec du <strong>matériel LAYHER de type
+                                    multi-directionnel</strong> composé de garde-corps de montage et démontage en
+                                sécurité (dit MDS). Référence mondiale en système d’échafaudage, ce matériel répond
+                                rigoureusement aux exigences les plus élevées en matière de sécurité.</p>
+                            <p>Aussi, nous veillons à ce que toutes nos équipes soient <strong> régulièrement formées
+                                </strong> à l’évolution des normes en matière de sécurité.</p>
+
+                        </div>
+                        <div class="value-box">
+                            <img src="{{ asset('siteweb/images/J4R_engagement_réactivité-150x150.png') }} " alt="Engagement">
+                            <h3>L'engagement et la réactivité</h3>
+                            <p>L’une des clés de notre succès repose sur <strong>une équipe
+                                    engagée</strong>. Les femmes
+                                et les hommes constituant l’équipe de J4R ont en commun <strong>un esprit d’équipe, de
+                                    partage et une volonté d’amélioration continue</strong>. Chaque projet est
+                                <strong>un nouveau défi</strong> et chacun veille à trouver les solutions les plus
+                                efficaces dans une volonté de toujours mieux faire.
+                            </p>
+                            <p>La relation de proximité établie entre les équipes de J4R, nos partenaires et nos
+                                fournisseurs nous permet de garantir <strong> une réactivité </strong> pour laquelle
+                                nous sommes aujourd’hui reconnus.</p>
+                            <p>Cette réactivité est également aidée par notre positionnement géographique qui nous
+                                permet d’assurer<strong> un suivi rigoureux et régulier </strong> de tous nos chantiers
+                                situés en région Ile de France.</p>
+
+                        </div>
+                        <div class="value-box">
+                            <img src="{{ asset('siteweb/images/J4R_professionnalisme_performance-150x150.png') }} "
+                                alt="Professionnalisme">
+                            <h3>Le professionnalisme et la performance</h3>
+                            <p>Notre force repose également sur <strong>une équipe qualifiée</strong> aux différentes
+                                étapes d’un projet. Nos chargés d’affaires ont la compétence de réaliser
+                                <strong>l’ensemble des tâches afférentes à un chantier</strong>: de l’étude sur plan ou
+                                relevé à la réalisation des plans d’échafaudages en 3D, Autocad ou Revit.
+                            </p>
+                            <p>Cette large compétence permet ainsi de <strong> maîtriser les contraintes </strong> d’un
+                                chantier à toutes ses étapes et ainsi assurer une meilleure coordination..</p>
+                            <p>Nos chargés d’affaires sont les interlocuteurs principaux des clients et veillent
+                                à<strong> optimiser la coordination </strong> entre le maître d’œuvre, les entreprises
+                                utilisatrices et les équipes de montage.</p>
+                            <p>Animés par le <strong>goût du défi </strong> et la <strong>volonté constante
+                                    d’évolution,</strong> nous veillons à nous former en continu dans le but d’être
+                                prêts pour </strong> le Bâtiment numérique de demain <strong></p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!--================End Feature Items Area =================-->
+
+
+
+
+        </div>
+
+        <div class="height-emulator"></div>
+        <!--================Footer Area =================-->
+        <footer class="footer_area">
+            <div class="container_footer">
+                <div class="footer_content ">
+                    <div class="footer_logo">
+                        <img src="{{ asset('siteweb/images/logo.png') }} " alt="J4R Échafaudages">
+                    </div>
+                    <div class="footer_section">
+                        <h5>NAVIGATION</h5>
+                        <ul class="nav flex-column">
+                            <li><a href="{{ path('app_web_site') }}">Accueil</a></li>
+                            <li><a href="{{ path('app_web_site_realisations') }}">J4R ÉCHAFAUDAGES</a></li>
+                            <li><a href="portfolio.html">RÉALISATIONS</a></li>
+                            <li><a href="{{ path('app_web_site_realisations') }}">CONTACT</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_section logos_certification">
+                        <ul>
+                            <li class="linkdin"><a href="https://fr.linkedin.com/company/j4r-echafaudages"
+                                    target="_blank">
+                                    <img src="{{ asset('siteweb/images/linkedin.png') }} " alt="J4R Échafaudages">
+                                </a></li>
+                            <li><img src="{{ asset('siteweb/images/logo-federation-francaise-du-batiment.png') }} "
+                                    alt="J4R Échafaudages"></li>
+                            <li><img src="{{ asset('siteweb/images/logo_color.svg')}}" alt="J4R Échafaudages"></li>
+                        </ul>
+                    </div>
+                    <div class="footer_section">
+                        <h5>CONTACT</h5>
+                        <p>Adresse : 49 Rue Ampère<br>77400 Lagny-sur-Marne</p>
+                        <p>Horaires : 8h – 18H du lundi au vendredi</p>
+                        <p>Téléphone : 01 60 07 22 01</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--================End Footer Area =================-->
+    </div>
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js') }}, then Bootstrap JS -->
+    <script src="{{ asset('siteweb/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('siteweb/js/popper.min.js') }}"></script>
+    <script src="{{ asset('siteweb/js/bootstrap.min.js') }}"></script>
+
+    <!-- Rev slider js -->
+    <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+
+    <!-- Extra Plugin CSS -->
+    <script src="{{ asset('siteweb/vendors/animate-css/wow.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/isotop/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/isotop/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('siteweb/js/parallaxie.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/splitting/splitting.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/animsition-preloader/js/animsition.min.js') }}"></script>
+
+    <script src="{{ asset('siteweb/js/theme.js') }}"></script>
+    <script>
+        function toggleContent(contentId, toggleId) {
+            var content = document.getElementById(contentId);
+            var toggle = document.getElementById(toggleId);
+
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                toggle.textContent = "-";
+            } else {
+                content.style.display = "none";
+                toggle.textContent = "+";
+            }
+        } 
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./variable";
+
+.btn {
+  i, svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.icon {
+    padding: .4rem .6rem;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.icon-left {
+      svg {
+        margin-right: 3px;
+      }
+    }
+
+    &.icon-right {
+      svg {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  &.btn-outline-white {
+    color: #fff;
+    border-color: #fff;
+
+    &:hover {
+      color: #333;
+      background-color: #fff;
+    }
+  }
+
+  @each $key, $value in $theme-colors-light {
+    &.btn-light-#{$key} {
+      background-color: $value;
+      color: darken($value, 80%)
+    }
+  }
+
+  @each $key, $value in $theme-colors {
+    &.btn-#{$key} {
+      @if $key == "light" {
+        color: $body-color;
+      } @else {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-group {
+  &:not(.dropdown) .btn:not([class*="btn-"]) {
+    border: 1px solid #DFE3E7;
+  }
+
+  & > .btn {
+    border-radius: .267rem;
+  }
+}
+
+.buttons {
+  .btn {
+    margin: 0 10px 10px 0;
+  }
+}
+
+.mt-10 { margin-top: 3rem; }
+.mb-10 { margin-bottom: 3rem; }
+.my-10 { margin-top: 3rem; margin-bottom: 3rem; }
+.mb-24 { margin-bottom: 6rem; }
+.my-24 { margin-bottom: 6rem; margin-top: 6rem; }
+
+// Opacity
+.opacity-50 { opacity: 50%; }
+
+// Padding
+.py-4-5 { padding-top: 2rem !important; padding-bottom: 2rem !important }
+
+
+// Font size
+.text-sm { font-size: .875rem; }
+.text-xl { font-size: 1.25rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-6xl { font-size: 4rem; }
+.text-black { color: #000 }
+
+// Background
+.bg-gradient-ltr { background: linear-gradient(to right, #095CDE, #53C3F3); }
+@each $key, $value in $theme-colors-light {
+  .bg-light-#{$key} {
+    background-color: $value;
+    color: darken($value,80%);
+  }
+}
+
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: bold; }
+.font-extrabold { font-weight: 800; }
+
+// Text Width
+.text-width-md { max-width: 450px }
+
+// Text Color
+.text-gray-300 { color: $gray-300 !important }
+.text-gray-400 { color: $gray-400 !important  }
+.text-gray-500 { color: $gray-500 !important  }
+.text-gray-600 { color: $gray-600 !important  }
+
+
+// Button
+.btn-xl { padding: 1rem 2rem; }
+
+// Icon
+.icon-mid:before { vertical-align: middle; }

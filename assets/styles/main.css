@@ -1,0 +1,20 @@
+
+
+main {
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    'aside header'
+    'aside contenido';
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: auto 1fr;
+}
+
+
+
+
+
+article {
+  grid-area: contenido;
+  background-color: lightslategrey;
+}

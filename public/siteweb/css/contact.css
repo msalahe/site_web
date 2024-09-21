@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap');
+
+
+.contact_page_area {
+    padding-top: 50px;
+}
+
+.contact-info {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding-top: 50px;
+    margin-top: 80px;
+}
+
+.navbar-light .navbar-toggler span {
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .p-170{
+        padding-top: 100px;
+    }
+}
+
+.contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: Montserrat;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-info img {
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content .left-column {
+    flex: 2;
+    min-width: 250px;
+    margin-right: 20px;
+}
+
+.content .right-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.right-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.right-column ul li::before {
+    content: "•";
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.right-column h3 {
+    margin-top: 0;
+}
+
+.content p,
+.right-column li {
+    margin-bottom: 10px;
+}
+
+.home_logo img {
+
+    width: 100%;
+    margin-left: 18vmin;
+    margin-top: 2vmax;
+
+}

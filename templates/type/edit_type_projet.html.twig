@@ -1,0 +1,39 @@
+<div class="modal fade col-md-4" id="edit-service-{{ type.getId() }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <form class="form-control" method="POST" onsubmit="return editType(event,{{ type.getId() }})" id="service-form">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Modifier type du projet
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-{{ type.getId() }}" id="modal-body-{{ type.getId() }}">
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            Nom du type 
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control form-control-sm-2" name="type_projet_new_service" id="type_projet" value="{{ type.getNameType() }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="footer-load-{{ type.getId() }}" style="display: none;">
+                         <button class="btn btn-primary" type="button" disabled> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span class="visually-hidden">Loading...</span>
+                         </button>
+                    </div>
+                    <div id="modal_button_edit{{ type.getId() }}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Annuler
+                        </button>
+                        <button type="submit" class="btn btn-primary submit" value="create" name="create_new_service" id="create_new_service" onclick="$('#modal_button_edit{{ type.getId() }}').hide();$('#footer-load-{{ type.getId() }}').show();">
+                            Enregistrer
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

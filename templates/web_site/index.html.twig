@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="shortcut icon" href="{{ asset('siteweb/images/j4r_logo.png') }}" type="image/x-icon">
+  <title>J4R Échafaudages – Specialisé dans le transport, la location et le montage d’échafaudages </title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ asset('siteweb/css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/css/font-awesome.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/vendors/linearicons/style.css') }}" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+
+  <!-- Rev slider css -->
+  <link href="{{ asset('siteweb/vendors/revolution/css/settings.css') }}" rel="stylesheet" />
+  <link href="{{ asset('siteweb/vendors/revolution/css/layers.css') }}" rel="stylesheet" />
+  <link href="{{ asset('siteweb/vendors/revolution/css/navigation.css') }}" rel="stylesheet" />
+
+  <!-- Extra Plugin CSS -->
+  <link rel="stylesheet" href="{{ asset('siteweb/vendors/animate-css/animate.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/vendors/slick/slick.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/vendors/popup/magnific-popup.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/vendors/splitting/splitting.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/vendors/animsition-preloader/css/animsition.min.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- main css -->
+  <link rel="stylesheet" href="{{ asset('siteweb/css/footer.css') }}" />
+
+  <link rel="stylesheet" href="{{ asset('siteweb/css/style.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/css/responsive.css') }}" />
+  <link rel="stylesheet" href="{{ asset('siteweb/nicepage.css') }}" media="screen">
+  <link rel="stylesheet" href="{{ asset('siteweb/Accueil.css') }}" media="screen">
+  <link rel="stylesheet" href="{{ asset('siteweb/css/acceuil.css') }}" media="screen">
+
+  <script class="u-script" type="text/javascript" src="{{ asset('siteweb/jquery.js') }}" defer=""></script>
+  <script class="u-script" type="text/javascript" src="{{ asset('siteweb/nicepage.js') }}" defer=""></script>
+  <style>
+    @media (min-width: 2560px) {
+      .home_logo img {
+        width: 150px;
+        /* Ajuster la taille pour les grands écrans */
+      }
+    }
+
+    /* Pour les écrans de taille moyenne */
+    @media (min-width: 1440px) and (max-width: 2559px) {
+      .home_logo img {
+        width: 175px;
+        /* Ajuster la taille pour les écrans moyens */
+      }
+    }
+
+    /* Pour les petits écrans */
+    @media (max-width: 1439px) {
+      .home_logo img {
+        width: 150px;
+        /* Taille par défaut ou ajustée pour les petits écrans */
+      }
+    }
+  </style>
+</head>
+
+<body data-scroll-animation="true" class="loading">
+  <div class="animsition">
+    <div class="body_wrapper">
+
+      <!--================Header Area =================-->
+      <header class="header_area home_page">
+        <div class="home_logo">
+          <a href="{{ path('app_web_site') }}"><img src="{{ asset('siteweb/images/logo.png') }}" alt=""></a>
+        </div>
+        <div class="main_menu">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="{{ path('app_web_site') }}">
+                <img src="{{ asset('siteweb/images/logo.png') }}" alt="" />
+                <img src="{{ asset('siteweb/images/j4r_logo.png') }}" alt="" />
+              </a>
+              <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav centered-nav">
+                  <li class="active">
+                    <a href="{{ path('app_web_site') }}"><i class="fas fa-home"></i></a>
+                  </li>
+                  <li><a href="{{ path('app_web_site_about') }}">J4R ÉCHAFAUDAGES</a></li>
+                  <li class="dropdown submenu">
+                    <a href="{{ path('app_web_site_realisations') }}">RÉALISATIONS</a>
+                  </li>
+                  <li><a href="{{ path('app_web_site_contact') }}">CONTACT</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <!--================End Footer Area =================-->
+
+      <!--================Slider Area =================-->
+      <section class="main_slider_area">
+        <div id="main_slider1" class="rev_slider" data-version="5.3.1.6">
+          <ul>
+            <li data-index="rs-1587" data-transition="slotzoom-horizontal" data-slotamount="8" data-masterspeed="1000"
+              data-fsmasterspeed="1000">
+              <!-- MAIN IMAGE -->
+              <img src="{{ asset('siteweb/images/j4r-echafaudage-slide1.jpg') }}" alt="" data-bgposition="center center"
+                data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
+
+              <!-- LAYER NR. 1 -->
+              <div class="slider_text_box center">
+                <div class="tp-caption tp-resizeme first_text" data-x="center" data-hoffset="" data-y="center"
+                  data-voffset="-50" data-fontsize="['40','40','40','25','25']"
+                  data-lineheight="['50','50','50','30','30']" data-width="['800','700','600','500','400']"
+                  data-height="none" data-whitespace="normal" data-type="text" data-responsive_offset="on"
+                  data-frames='[{"delay":10,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":1500,"frame":"999","to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                  data-textAlign="center">
+                  <img src="{{ asset('siteweb/images/j4r_logo.png') }}" alt=""><span class="title_home"> <br> Specialisé dans l'étude, la
+                    location et le
+                    montage
+                    d’échafaudages
+                  </span>
+                </div>
+
+                <a class="arrow_btn project_button" href="{{ path('app_web_site_realisations') }}" style="color: white;">
+                  <div class="tp-caption tp-resizeme slider_button" data-x="center" data-hoffset="" data-y="center"
+                    data-voffset="200" data-fontsize="['14','14','14','14']" data-lineheight="['46','46','46','46']"
+                    data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                    data-responsive_offset="on"
+                    data-frames='[{"delay":10,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":1500,"frame":"999","to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                    Voir Projets<i class="lnr lnr-chevron-right"></i>
+                  </div>
+                </a>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!--================End Slider Area =================-->
+
+      <!--================Who We Are Area =================-->
+      <section class="who_we_area pt-174">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <div class="who_we_text">
+                <p class="wow fadeInUp" data-wow-delay="400ms">Créée en 2013, la société J4R échafaudage est spécialisée
+                  dans <strong>l’étude, la location, le montage, le transport et la maintenance de tous types
+                    d’échafaudages.</strong>
+                  <br>
+                  Notre entreprise intervient sur <strong> toute la région Ile de France </strong> avec une
+                  prédisposition pour les
+                  chantiers dits « complexes ».
+                  <br>
+                  Installées en Seine et Marne (77) depuis sa création, nos équipes ont la particularité d’œuvrer dans
+                  l’un des départements les plus rigoureux de France en matière de protections collectives
+                </p>
+                <a class="arrow_btn" href="{{ path('app_web_site_realisations') }}">Voir <i class="lnr lnr-chevron-right"></i></a>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!--================End Who We Are Area =================-->
+
+      <section class="u-align-center u-clearfix u-container-align-center u-section-1 section-background"
+        id="carousel_7b23">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+          <div class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-list u-list-1">
+            <div class="u-repeater u-repeater-1">
+              <div
+                class="u-align-center u-container-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                <div
+                  class="u-container-layout u-similar-container u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+                  <div
+                    class="u-container-align-center u-container-style u-group u-palette-3-base u-shape-circle u-group-1">
+                    <div class="u-container-layout u-valign-middle">
+                      <h3 class="u-align-center u-custom-font u-font-oswald u-text u-text-default u-text-2"
+                        data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">20+
+                      </h3>
+                    </div>
+                  </div>
+                  <h5 class="u-align-center u-text u-text-default u-text-palette-1-dark-3 u-text-3"> Personnel
+                    administratif et d'encadrement
+                  </h5>
+                </div>
+              </div>
+              <div
+                class="u-align-center u-container-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                <div
+                  class="u-container-layout u-similar-container u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-5">
+                  <div
+                    class="u-container-align-center u-container-style u-group u-palette-3-base u-shape-circle u-group-3">
+                    <div class="u-container-layout u-valign-middle">
+                      <h3 class="u-align-center u-custom-font u-font-oswald u-text u-text-default u-text-6"
+                        data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">50+
+                      </h3>
+                    </div>
+                  </div>
+                  <h5 class="u-align-center u-text u-text-default u-text-palette-1-dark-3 u-text-7">Compagnons</h5>
+                </div>
+              </div>
+              <div
+                class="u-align-center u-container-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                <div
+                  class="u-container-layout u-similar-container u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-3">
+                  <div
+                    class="u-container-align-center u-container-style u-group u-palette-3-base u-shape-circle u-group-2">
+                    <div class="u-container-layout u-valign-middle">
+                      <h3 class="u-align-center u-custom-font u-font-oswald u-text u-text-default u-text-4"
+                        data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">8M+
+                      </h3>
+                    </div>
+                  </div>
+                  <h5 class="u-align-center u-text u-text-default u-text-palette-1-dark-3 u-text-5"> Millions d'euros de
+                    chiffre d'affaire en 2023
+                  </h5>
+                </div>
+              </div>
+              <div
+                class="u-align-center u-container-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                <div
+                  class="u-container-layout u-similar-container u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-7">
+                  <div
+                    class="u-container-align-center u-container-style u-group u-palette-3-base u-shape-circle u-group-4">
+                    <div class="u-container-layout u-valign-middle">
+                      <h3 class="u-align-center u-custom-font u-font-oswald u-text u-text-default u-text-8"
+                        data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">1500+
+                      </h3>
+                    </div>
+                  </div>
+                  <h5 class="u-align-center u-text u-text-default u-text-palette-1-dark-3 u-text-9">Chantiers Realisés
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+      <!--================Client Logo Area =================-->
+      <section class="client_logo_area">
+        <div class="container slider">
+          <div class="main_title">
+            <h2 class="wow center" data-splitting><span class="color">ILS NOUS FONT</span> CONFIANCES
+            </h2>
+          </div>
+          <br>
+          <br>
+          <div class="slide-track">
+
+            <div class=" slide " data-wow-delay="300ms">
+              <img src="{{ asset('siteweb/images/client-logo/bouygues-1.png') }}" alt="">
+            </div>
+
+
+            <div class=" slide " data-wow-delay="400ms">
+              <img src="{{ asset('siteweb/images/client-logo/cogedim-1.png') }}" alt="">
+            </div>
+
+
+            <div class=" slide " data-wow-delay="600ms">
+              <img src="{{ asset('siteweb/images/client-logo/Demathieu-Bard (1).png') }}" alt="">
+            </div>
+
+            <div class=" slide " data-wow-delay="700ms">
+              <img src="{{ asset('siteweb/images/client-logo/Kaffmann-board-1.png') }}" alt="">
+            </div>
+
+
+            <div class=" slide " data-wow-delay="800ms">
+              <img src="{{ asset('siteweb/images/client-logo/Pichet.png') }}" alt="">
+            </div>
+
+
+            <div class=" slide " data-wow-delay="900ms">
+              <img src="{{ asset('siteweb/images/client-logo/Pierre-val.png') }}" alt="">
+            </div>
+
+
+            <div class=" slide " data-wow-delay="1s">
+              <img src="{{ asset('siteweb/images/client-logo/Pichet.png') }}" alt="">
+            </div>
+
+
+            <div class=" slide " data-wow-delay="1.1s">
+              <img src="{{ asset('siteweb/images/client-logo/Marignan-1.png') }}" alt="">
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+
+
+    </div>
+
+    <div class="height-emulator"></div>
+    <!--================Footer Area =================-->
+    <footer class="footer_area">
+      <div class="container_footer">
+        <div class="footer_content">
+          <div class="footer_logo">
+            <img src="{{ asset('siteweb/images/logo.png') }}" alt="J4R Échafaudages">
+          </div>
+          <div class="footer_section">
+            <h5>NAVIGATION</h5>
+            <ul class="nav flex-column">
+              <li><a href="{{ path('app_web_site') }}">Accueil</a></li>
+              <li><a href="{{ path('app_web_site_about') }}">J4R ÉCHAFAUDAGES</a></li>
+              <li><a href="{{ path('app_web_site_realisations') }}">RÉALISATIONS</a></li>
+              <li><a href="{{ path('app_web_site_contact') }}">CONTACT</a></li>
+            </ul>
+          </div>
+          <div class="footer_section logos_certification">
+            <ul>
+              <li class="linkdin"><a href="https://fr.linkedin.com/company/j4r-echafaudages" target="_blank">
+                  <img src="{{ asset('siteweb/images/linkedin.png') }}" alt="J4R Échafaudages">
+                </a></li>
+              <li><img src="{{ asset('siteweb/images/logo-federation-francaise-du-batiment.png') }}" alt="J4R Échafaudages"></li>
+              <li><img src="{{ asset('siteweb/images/logo_color.svg') }}" alt="J4R Échafaudages"></li>
+            </ul>
+          </div>
+          <div class="footer_section">
+            <h5>CONTACT</h5>
+            <p>Adresse : 49 Rue Ampère<br>77400 Lagny-sur-Marne</p>
+            <p>Horaires : 8h – 18H du lundi au vendredi</p>
+            <p>Téléphone : 01 60 07 22 01</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--================End Footer Area =================-->
+
+  </div>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js') }}, then Bootstrap JS -->
+  <script src="{{ asset('siteweb/js/jquery-3.5.1.min.js') }}"></script>
+  <!-- <script src="{{ asset('siteweb/js/jquery.min.js') }}"></script> -->
+  <script src="{{ asset('siteweb/js/popper.min.js') }}"></script>
+  <script src="{{ asset('siteweb/js/bootstrap.min.js') }}"></script>
+
+  <!-- Rev slider js -->
+  <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+
+  <!-- Extra Plugin CSS -->
+  <script src="{{ asset('siteweb/vendors/animate-css/wow.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/isotop/imagesloaded.pkgd.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/slick/slick.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/popup/jquery.magnific-popup.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/splitting/splitting.min.js') }}"></script>
+  <script src="{{ asset('siteweb/vendors/animsition-preloader/js/animsition.min.js') }}"></script>
+
+  <script src="{{ asset('siteweb/js/theme.js') }}"></script>
+  <script>
+    window.addEventListener("load", function () {
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#fff"
+          },
+          "button": {
+            "background": "#00aaff"
+          }
+        },
+        "theme": "classic",
+        "position": "bottom-right",
+        "content": {
+          "message": "Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.",
+          "dismiss": "Accepter",
+          "link": "En savoir plus",
+          "href": "politique-de-cookies.html" // Remplacez par le lien vers votre politique de cookies
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>

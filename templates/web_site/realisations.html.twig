@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="{{ asset('siteweb/images/logo.png') }}" type="image/x-icon">
+    <title>J4R Échafaudages &#8211; Specialisé dans le transport, la location et le montage d’échafaudages</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('siteweb/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/linearicons/style.css') }}" />
+
+    <!-- Rev slider css -->
+    <link href="{{ asset('siteweb/vendors/revolution/css/settings.css') }}" rel="stylesheet" />
+    <link href="{{ asset('siteweb/vendors/revolution/css/layers.css') }}" rel="stylesheet" />
+    <link href="{{ asset('siteweb/vendors/revolution/css/navigation.css') }}" rel="stylesheet" />
+
+    <!-- Extra Plugin CSS -->
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/animate-css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/slick/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/popup/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/splitting/splitting.css') }}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/animsition-preloader/css/animsition.min.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('siteweb/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/header.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('siteweb/css/responsive.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .navbar-light .navbar-toggler span {
+            color: #000;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #000;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 16px;
+            font-family: Montserrat;
+        }
+
+        .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info img {
+            margin-top: 20px;
+            width: 100%;
+            height: auto;
+        }
+
+
+        /* Media query pour enlever les barres verticales en mode responsive */
+        @media (max-width: 768px) {
+            .navbar-nav>li:not(:last-child)::after {
+                content: none;
+            }
+
+            .portfolio_area {
+                padding-top: 100px;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .content .left-column {
+            flex: 2;
+            min-width: 250px;
+            margin-right: 20px;
+        }
+
+        .content .right-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .right-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .right-column ul li::before {
+            content: "•";
+            color: #333;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .right-column h3 {
+            margin-top: 0;
+        }
+
+        .content p,
+        .right-column li {
+            margin-bottom: 10px;
+        }
+
+        .header-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border: none;
+            border-top: 1px solid #777777;
+            /* Change the color as needed */
+            margin: 0;
+        }
+
+        .home_logo img {
+
+            width: 100%;
+            margin-left: 18vmin;
+            margin-top: 2vmax;
+
+        }
+
+        .g_fillter .nav {
+            justify-content: center;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ asset('siteweb/css/footer.css') }}" />
+
+</head>
+
+<body data-scroll-animation="true" class="loading">
+    <div class="animsition">
+        <div class="body_wrapper">
+
+            <!--================Header Area =================-->
+            <header class="header_area home_page">
+                <div class="home_logo">
+                    <a href="{{ path('app_web_site') }}"><img src="{{ asset('siteweb/images/logo.png') }}" alt=""></a>
+                </div>
+                <div class="main_menu">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="{{ path('app_web_site') }}">
+                                <img src="{{ asset('siteweb/images/logo.png') }}" alt="" />
+                                <img src="{{ asset('siteweb/images/j4r_logo.png') }}" alt="" />
+                            </a>
+                            <button class="navbar-toggler " type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="nav navbar-nav centered-nav">
+                                    <li class="">
+                                        <a href="{{ path('app_web_site') }}"><i class="fas fa-home"></i></a>
+                                    </li>
+                                    <li><a href="{{ path('app_web_site_about') }}">J4R ÉCHAFAUDAGES</a></li>
+                                    <li class="active">
+                                        <a href="{{ path('app_web_site_realisations') }}">RÉALISATIONS</a>
+                                    </li>
+                                    <li><a href="{{ path('app_web_site_contact') }}">CONTACT</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+                <hr class="header-line">
+
+            </header>
+
+            <!--================End Header Area =================-->
+
+            <!--================About Image Area =================-->
+            <section class="about_img_area">
+
+            </section>
+            <!--================End About Image Area =================-->
+
+            <!--================Portfolio Area =================-->
+            <section class="portfolio_area pt-174">
+                <div class="container">
+                    <div class="g_fillter">
+                        <ul class="nav">
+                            <li class="active" data-filter="*"><a href="#">Tous</a></li>
+                            {% for type in types %}
+                           <li data-filter=".{{ type.getNameType()|lower|split(' ')[0] }}"><a href="#">{{ type.getNameType() }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="row portfolio_inner">
+                        <div class="col-lg-4 col-md-6 int building ext">
+                            <div class="portfolio_item wow fadeInUp" data-wow-delay="300ms"
+                                onclick="window.location.href = 'projet_detail.html';">
+                                <div class="portfolio_img">
+                                    <img class="img-fluid" src="{{ asset('siteweb/images/projet/1.JPG') }}" alt="">
+                                </div>
+                                <div class="portfolio_text">
+                                    <a href="#">
+                                        <h4>Docks des alcools – Saint Denis (93)
+                                        </h4>
+                                    </a>
+                                    <p>Réalisation d’un échafaudage de pied en structure pleine pour une utilisation en
+                                        plancher de travail et support pour cadre bâche.
+                                    </p>
+                                    <a class="arrow_btn dark" href="projet_detail.html">voir détail<i
+                                            class="lnr lnr-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% for projet in projets %}
+                        <div class="col-lg-4 col-md-6 {{ projet.getType().getNameType()|lower|split(' ')[0] }}">
+                            <div class="portfolio_item wow fadeInUp" data-wow-delay="300ms"
+                                onclick="window.location.href = '{{ path('app_web_site_about', { 'id': projet.id }) }}';">
+                                <div class="portfolio_img">
+                                    {% if projet.images|length > 0 %}
+                                        <img class="img-fluid" src="{{ asset('uploads/images/' ~ projet.images.first().filename) }}" alt="{{ projet.name }}">
+                                    {% else %}
+                                        <img class="img-fluid" src="{{ asset('siteweb/images/projet/default.jpg') }}" alt="{{ projet.name }}">
+                                    {% endif %}
+                                </div>
+                                <div class="portfolio_text">
+                                    <a href="{{ path('app_web_site_about', { 'id': projet.id }) }}">
+                                        <h4>{{ projet.name }}</h4>
+                                    </a>
+                                    <p>{{ projet.description }}</p>
+                                    <a class="arrow_btn dark" href="{{ path('app_web_site_details', { 'id': projet.id }) }}">
+                                        voir détail<i class="lnr lnr-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </section>
+            <!--================End Portfolio Area =================-->
+
+
+        </div>
+
+        <div class="height-emulator"></div>
+        <!--================Footer Area =================-->
+        <footer class="footer_area">
+            <div class="container_footer">
+                <div class="footer_content ">
+                    <div class="footer_logo">
+                        <img src="{{ asset('siteweb/images/logo.png') }}" alt="J4R Échafaudages">
+                    </div>
+                    <div class="footer_section">
+                        <h5>NAVIGATION</h5>
+                        <ul class="nav flex-column">
+                            <li><a href="{{ path('app_web_site') }}">Accueil</a></li>
+                            <li><a href="{{ path('app_web_site_about') }}">J4R ÉCHAFAUDAGES</a></li>
+                            <li><a href="{{ path('app_web_site_realisations') }}">RÉALISATIONS</a></li>
+                            <li><a href="{{ path('app_web_site_contact') }}">CONTACT</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_section logos_certification">
+                        <ul>
+                            <li class="linkdin"><a href="https://fr.linkedin.com/company/j4r-echafaudages"
+                                    target="_blank">
+                                    <img src="{{ asset('siteweb/images/linkedin.png') }}" alt="J4R Échafaudages">
+                                </a></li>
+                            <li><img src="{{ asset('siteweb/images/logo-federation-francaise-du-batiment.png') }}"
+                                    alt="J4R Échafaudages"></li>
+                            <li><img src="{{ asset('siteweb/images/logo_color.svg') }}" alt="J4R Échafaudages"></li>
+                        </ul>
+                    </div>
+                    <div class="footer_section">
+                        <h5>CONTACT</h5>
+                        <p>Adresse : 49 Rue Ampère<br>77400 Lagny-sur-Marne</p>
+                        <p>Horaires : 8h – 18H du lundi au vendredi</p>
+                        <p>Téléphone : 01 60 07 22 01</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--================End Footer Area =================-->
+    </div>
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js') }}, then Bootstrap JS -->
+    <script src="{{ asset('siteweb/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('siteweb/js/popper.min.js') }}"></script>
+    <script src="{{ asset('siteweb/js/bootstrap.min.js') }}"></script>
+
+    <!-- Rev slider js -->
+    <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+
+    <!-- Extra Plugin CSS -->
+    <script src="{{ asset('siteweb/vendors/animate-css/wow.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/isotop/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/isotop/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/splitting/splitting.min.js') }}"></script>
+    <script src="{{ asset('siteweb/vendors/animsition-preloader/js/animsition.min.js') }}"></script>
+
+    <script src="{{ asset('siteweb/js/theme.js') }}"></script>
+
+
+</body>
+
+</html>

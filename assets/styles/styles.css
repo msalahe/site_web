@@ -1,0 +1,36 @@
+.error_msg {
+    color: red;
+}
+
+/* Reset some default styles for better consistency */
+
+/* Basic styling for the table */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Add some responsive styling using media queries */
+@media (max-width: 768px) {
+    .custom-table {
+        font-size: 14px;
+    }
+
+    .custom-table th,
+    .custom-table td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-table {
+        font-size: 12px;
+    }
+}

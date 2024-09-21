@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="{{ asset('siteweb/images/j4r_logo.png')}}" type="image/x-icon">
+    <title>J4R Échafaudages – Specialisé dans le transport, la location et le montage d’échafaudages </title>
+    <link rel="stylesheet" href="{{ asset('siteweb/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/linearicons/style.css')}}" />
+
+    <!-- Rev slider css -->
+    <link href="{{ asset('siteweb/vendors/revolution/css/settings.css')}}" rel="stylesheet" />
+    <link href="{{ asset('siteweb/vendors/revolution/css/layers.css')}}" rel="stylesheet" />
+    <link href="{{ asset('siteweb/vendors/revolution/css/navigation.css')}}" rel="stylesheet" />
+
+    <!-- Extra Plugin CSS -->
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/animate-css/animate.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/slick/slick.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/popup/magnific-popup.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/splitting/splitting.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/vendors/animsition-preloader/css/animsition.min.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('siteweb/css/style.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/header.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/contact.css')}}" />
+
+    <link rel="stylesheet" href="{{ asset('siteweb/css/responsive.css')}}" />
+    <link rel="stylesheet" href="{{ asset('siteweb/css/footer.css')}}" />
+    <style>
+        @media (max-width: 768px) {
+            .p-170 {
+                padding-top: 40px;
+            }
+        }
+
+        .about_img_area {
+            padding-top: 40px;
+        }
+    </style>
+
+</head>
+
+
+<body data-scroll-animation="true" class="loading">
+    <div class="animsition">
+        <div class="body_wrapper">
+
+            <!--================Header Area =================-->
+            <header class="header_area home_page">
+                <div class="home_logo">
+                    <a href="{{ path('app_web_site') }}"><img src="{{ asset('siteweb/images/logo.png')}}" alt=""></a>
+                </div>
+                <div class="main_menu">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="{{ path('app_web_site') }}">
+                                <img src="{{ asset('siteweb/images/logo.png')}}" alt="" />
+                                <img src="{{ asset('siteweb/images/j4r_logo.png')}}" alt="" />
+                            </a>
+                            <button class="navbar-toggler " type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="nav navbar-nav centered-nav">
+                                    <li class="">
+                                        <a href="{{ path('app_web_site') }}"><i class="fas fa-home"></i></a>
+                                    </li>
+                                    <li><a href="{{ path('app_web_site_about') }}">J4R ÉCHAFAUDAGES</a></li>
+                                    <li class="dropdown submenu">
+                                        <a href="{{ path('app_web_site_realisations') }}">RÉALISATIONS</a>
+                                    </li>
+                                    <li class="active"><a href="{{ path('app_web_site_contact') }}">CONTACT</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+                <hr class="header-line">
+
+            </header>
+
+
+
+
+
+
+            <section class="experience_design_area p-170">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="contact-info">
+                                <p><strong>Adresse :</strong> 49 Rue Ampère, 77400 Lagny-sur-Marne</p>
+                                <p><strong>Téléphone :</strong> +33 (0) 1 60 07 22 01
+                                <p><strong>Email :</strong> <a href="mailto:contact@j4r.fr">contact@j4r.fr</a></p>
+                                <img src="{{ asset('siteweb/images/j4r_logo.png')}}" alt="Contact Image">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="main_title">
+                                <h2 class="wow" data-splitting>Écrivez-nous</h2>
+                            </div>
+                            <form class="contact_form row js-form">
+                                <div class="input-group col-md-12">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nom"
+                                        required>
+                                </div>
+                                <div class="input-group col-md-12">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Email *" required>
+                                </div>
+                                <div class="input-group col-md-12">
+                                    <input type="text" class="form-control" id="subject" name="subject"
+                                        placeholder="Sujet (Optional)">
+                                </div>
+                                <div class="input-group col-md-12">
+                                    <textarea class="form-control" name="message" id="message" rows="5" required
+                                        placeholder="Message"></textarea>
+                                </div>
+                                <div class="input-group col-md-12">
+                                    <button type="submit" value="submit" class="btn submit_btn">Contactez-nous</button>
+                                </div>
+                                <div class="success-message"><i class="fa fa-check text-primary"></i> Merci ! Votre
+                                    message a été envoyé avec succès...</div>
+                                <div class="error-message">Nous sommes désolés, mais quelque chose s'est mal passé.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--================End Contact Form Area =================-->
+
+            <section class="about_img_area">
+                <div class="mapBox">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.1948273950884!2d2.678455812756968!3d48.873562371214675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6052196a42f5b%3A0xdfed284af0442816!2sJ4R%20Echafaudages!5e0!3m2!1sfr!2sfr!4v1716389008559!5m2!1sfr!2sfr"
+                        width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </section>
+
+        </div>
+
+        <div class="height-emulator"></div>
+        <!--================Footer Area =================-->
+        <footer class="footer_area">
+            <div class="container_footer">
+                <div class="footer_content ">
+                    <div class="footer_logo">
+                        <img src="{{ asset('siteweb/images/logo.png')}}" alt="J4R Échafaudages">
+                    </div>
+                    <div class="footer_section">
+                        <h5>NAVIGATION</h5>
+                        <ul class="nav flex-column">
+                            <li><a href="{{ path('app_web_site') }}">Accueil</a></li>
+                            <li><a href="{{ path('app_web_site_about') }}">J4R ÉCHAFAUDAGES</a></li>
+                            <li><a href="{{ path('app_web_site_realisations') }}">RÉALISATIONS</a></li>
+                            <li><a href="{{ path('app_web_site_contact') }}">CONTACT</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_section logos_certification">
+                        <ul>
+                            <li class="linkdin"><a href="https://fr.linkedin.com/company/j4r-echafaudages"
+                                    target="_blank">
+                                    <img src="{{ asset('siteweb/images/linkedin.png')}}" alt="J4R Échafaudages">
+                                </a></li>
+                            <li><img src="{{ asset('siteweb/images/logo-federation-francaise-du-batiment.png')}}"
+                                    alt="J4R Échafaudages"></li>
+                            <li><img src="{{ asset('siteweb/images/logo_color.svg')}}" alt="J4R Échafaudages"></li>
+                        </ul>
+                    </div>
+                    <div class="footer_section">
+                        <h5>CONTACT</h5>
+                        <p>Adresse : 49 Rue Ampère<br>77400 Lagny-sur-Marne</p>
+                        <p>Horaires : 8h – 18H du lundi au vendredi</p>
+                        <p>Téléphone : 01 60 07 22 01</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- ================ End Footer Area ================= -->
+
+    </div>
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js')}}, then Bootstrap JS -->
+    <script src="{{ asset('siteweb/js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ asset('siteweb/js/popper.min.js')}}"></script>
+    <script src="{{ asset('siteweb/js/bootstrap.min.js')}}"></script>
+
+    <!-- Rev slider js -->
+    <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+
+    <!-- Extra Plugin CSS -->
+    <script src="{{ asset('siteweb/vendors/animate-css/wow.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/slick/slick.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/isotop/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/isotop/isotope.pkgd.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/splitting/splitting.min.js')}}"></script>
+    <script src="{{ asset('siteweb/vendors/animsition-preloader/js/animsition.min.js')}}"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEQhXdvO2Yz16kSBaeBzLt7wWRkECXmlg"></script>
+    <script src="{{ asset('siteweb/js/gmaps.min.js')}}"></script>
+    <script src="{{ asset('siteweb/js/map-active.js')}}"></script>
+
+    <!-- contact js -->
+    <script src="{{ asset('siteweb/js/jquery.validate.min.js')}}"></script>
+
+    <script src="{{ asset('siteweb/js/theme.js')}}"></script>
+</body>
+
+</html>

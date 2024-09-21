@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="col-12 col-xl-12">
+        <div class="card">
+            <div class="card-body p-4">
+                {{ form_start(form, {'attr': {'class': 'row g-3', 'enctype': 'multipart/form-data' }}
+                ) }}
+                <div class="col-md-12">
+                    {{ form_label(form.name, 'Nom Projet', {'label_attr': {'class': 'form-label' }}
+                    ) }}
+                    <div class="position-relative input-icon">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'id': 'input13', 'placeholder': 'Nom Projet' }}
+                        ) }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label' }}
+                    ) }}
+                    {{ form_widget(form.description, {'attr': {'class': 'form-control', 'id': 'input23', 'rows': 3 }}
+                    ) }}
+                </div>
+                <div class="col-md-12">
+                    {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label' }}
+                    ) }}
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control' }}
+                    ) }}
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <input type="file" id="projet_images" name="projet[images][]" multiple="multiple" class="form-control" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="d-md-flex d-grid align-items-center gap-3">
+                        <button type="submit" class="btn btn-primary px-4">
+                            Créer le projet
+                        </button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
