@@ -190,7 +190,32 @@
         <!-- ================ End Footer Area ================= -->
 
     </div>
-
+    <script>
+        $(document).ready(function() {
+            $('.js-form').on('submit', function(e) {
+                e.preventDefault();  // Empêcher le rechargement de la page
+        
+                var form = $(this);
+                var data = form.serialize();  // Sérialise les données du formulaire
+        
+                $.ajax({
+                    url: "{{ path('contact_send') }}",  // La route Symfony
+                    type: 'POST',
+                    data: data,
+                    success: function(response) {
+                        $('.success-message').fadeIn();  // Afficher le message de succès
+                        $('.error-message').hide();
+                        alert("ss");
+                    },
+                    error: function(response) {
+                        $('.error-message').fadeIn();  // Afficher le message d'erreur
+                        $('.success-message').hide();
+                    }
+                });
+            });
+        });
+        </script>
+        
 
 
 
@@ -228,6 +253,30 @@
     <script src="{{ asset('siteweb/js/jquery.validate.min.js')}}"></script>
 
     <script src="{{ asset('siteweb/js/theme.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-form').on('submit', function(e) {
+                e.preventDefault();  // Empêcher le rechargement de la page
+        
+                var form = $(this);
+                var data = form.serialize();  // Sérialise les données du formulaire
+        
+                $.ajax({
+                    url: "{{ path('contact_send') }}",  // La route Symfony
+                    type: 'POST',
+                    data: data,
+                    success: function(response) {
+                        $('.success-message').fadeIn();  // Afficher le message de succès
+                        $('.error-message').hide();
+                    },
+                    error: function(response) {
+                        $('.error-message').fadeIn();  // Afficher le message d'erreur
+                        $('.success-message').hide();
+                    }
+                });
+            });
+        });
+        </script>
 </body>
 
 </html>

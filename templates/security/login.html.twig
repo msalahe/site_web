@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta	charset="UTF-8">
+		<title>
+			{% block title %}
+				Se connecter
+			{% endblock %}
+		</title>
+		<link	rel="icon"	href="{{ asset('uploads/logo/j4r_logo.png') }}">
+		<link	href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap"	rel="stylesheet">
+		<link	href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined"	rel="stylesheet">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body	class="bg-login">
+		<!--authentication-->
+		<div	class="container-fluid my-5">
+			<div	class="row">
+				<div	class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mx-auto">
+					<div	class="card rounded-4">
+						<div	class="card-body p-5">
+							<img	src="{{ asset('uploads/logo/j4r_logo.png') }}"	class="mb-4"	width="145"	alt="">
+							<h4	class="fw-bold">Connectez-vous avec votre adresse email J4R</h4>
+							<p	class="mb-0"></p>
+							<div	class="form-body my-4">
+								<form	method="post"	class="row g-3">
+									{% if error %}
+										<div	class="alert alert-danger">
+											{{ error.messageKey|trans(error.messageData, 'security') }}
+										</div>
+									{% endif %}
+									{% if app.user %}
+										<div	class="mb-3">
+											You are logged in as
+											{{ app.user.email }}
+											,
+											<a	href="{{ path('app_logout') }}">
+												Logout
+											</a>
+										</div>
+									{% endif %}
+									<div	class="col-12">
+										<label	for="inputEmailAddress"	class="form-label">
+											Email
+										</label>
+										<input	type="email"	value="{{ last_username }}"	name="email"	id="inputEmail"	autocomplete="email"	required	autofocus	class="form-control"	id="inputEmailAddress"	placeholder="s.****@j4r.fr">
+									</div>
+									<div	class="col-12">
+										<label	for="inputChoosePassword"	class="form-label">
+											Mode de passe
+										</label>
+										<div	class="input-group"	id="show_hide_password">
+											<input	input	type="password"	name="password"	id="inputPassword"	autocomplete="current-password"	class="form-control border-end-0"	id="inputChoosePassword"		placeholder="Enter Password">
+											<a	href="javascript:;"	class="input-group-text bg-transparent">
+												<i	class="bi bi-eye-slash-fill"></i>
+											</a>
+										</div>
+									</div>
+									<input	type="hidden"	name="_csrf_token"	value="{{ csrf_token('authenticate') }}">
+									<div	class="col-12">
+										<div	class="d-grid">
+											<button	type="submit"	class="btn btn-primary">
+												Se connecter
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div><!--end row--></div>
+		</body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script>
+    $(document).ready(function () {
+      $("#show_hide_password a").on('click', function (event) {
+        event.preventDefault();
+        if ($('#show_hide_password input').attr("type") == "text") {
+          $('#show_hide_password input').attr('type', 'password');
+          $('#show_hide_password i').addClass("bi-eye-slash-fill");
+          $('#show_hide_password i').removeClass("bi-eye-fill");
+        } else if ($('#show_hide_password input').attr("type") == "password") {
+          $('#show_hide_password input').attr('type', 'text');
+          $('#show_hide_password i').removeClass("bi-eye-slash-fill");
+          $('#show_hide_password i').addClass("bi-eye-fill");
+        }
+      });
+    });
+  </script>
+	</body>
+</html>

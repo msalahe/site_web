@@ -27,7 +27,7 @@ class ProjetController extends AbstractController
     {
         $this->photoDir = $photoDir;
     }
-    #[Route('/projet', name: 'app_projet')]
+    #[Route('/', name: 'app_projet')]
     public function index(): Response
     {
         return $this->render('projet/index.html.twig', [
