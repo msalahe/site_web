@@ -221,7 +221,7 @@
                         {% for projet in projets %}
                         <div class="col-lg-4 col-md-6 {{ projet.getType().getNameType()|lower|split(' ')[0] }}">
                             <div class="portfolio_item wow fadeInUp" data-wow-delay="300ms"
-                                onclick="window.location.href = '{{ path('app_web_site_about', { 'id': projet.id }) }}';">
+                                onclick="window.location.href = '{{ path('app_web_site_details', { 'id': projet.id }) }}';">
                                 <div class="portfolio_img">
                                     {% if projet.images|length > 0 %}
                                         <img class="img-fluid" src="{{ asset('uploads/images/' ~ projet.images.first().filename) }}" alt="{{ projet.name }}">
