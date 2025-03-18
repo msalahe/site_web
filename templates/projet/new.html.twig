@@ -20,11 +20,11 @@
                     ) }}
                 </div>
                 <div class="col-md-12">
-                    {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label' }}
-                    ) }}
-                    {{ form_widget(form.type, {'attr': {'class': 'form-control' }}
-                    ) }}
+                    {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label' }} ) }}
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control' }}) }}
+                    {{ form_errors(form.type) }} 
                 </div>
+                
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
@@ -43,4 +43,46 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            
+            form.addEventListener("submit", function (event) {
+                let isValid = true;
+                let firstErrorField = null;
+        
+                // Vérification des champs de texte et textarea
+                form.querySelectorAll("input[type='text'], textarea").forEach(function (field) {
+                    if (field.value.trim() === "") {
+                        isValid = false;
+                        field.classList.add("is-invalid");
+                        if (!firstErrorField) firstErrorField = field;
+                    } else {
+                        field.classList.remove("is-invalid");
+                    }
+                });
+        
+                // Vérification du champ de sélection (select)
+                form.querySelectorAll("select").forEach(function (select) {
+                    if (select.value === "") {
+                        isValid = false;
+                        select.classList.add("is-invalid");
+                        if (!firstErrorField) firstErrorField = select;
+                    } else {
+                        select.classList.remove("is-invalid");
+                    }
+                });
+        
+              
+                // Empêche l'envoi si un champ est invalide
+                if (!isValid) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (firstErrorField) firstErrorField.focus();
+                    error_noti("Veuillez remplir tous les champs obligatoires.");
+                }
+            });
+        });
+        </script>
+        
 {% endblock %}

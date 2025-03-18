@@ -1,19 +1,18 @@
 <?php
 
-// src/Form/ProjetType.php
-
 namespace App\Form;
 
 use App\Entity\Projet;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProjetType extends AbstractType
 {
@@ -22,15 +21,42 @@ class ProjetType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom du projet',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Le nom du projet est obligatoire.',
+                    ]),
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Nom du projet',
+                ],
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
-                'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'La description est obligatoire.',
+                    ]),
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'rows' => 3,
+                ],
             ])
             ->add('type', null, [
                 'label' => 'Type',
-            ])
-            ;
+                'placeholder' => 'Sélectionnez un type',
+                'expanded' => false,
+                'multiple' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez sélectionner un type.',
+                    ]),
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
