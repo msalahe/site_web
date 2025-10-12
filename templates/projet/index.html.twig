@@ -1,50 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PROJETS{% endblock %}
+{% block title %}Gestion des Projets{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+{% endblock %}
 
 {% block body %}
 <div class="card">
     <div class="card-body">
-        <div class="table-responsive">
-            <div class="main-content">
-                <div class="row g-3">
-                    <div class="col-auto flex-grow-1 overflow-auto">
-                        <div class="d-flex align-items-center gap-2 justify-content-lg-end position-static ms-auto">
-                            <a href="{{ path('app_projet_new') }}" class="btn btn-inverse-success px-5">
-                                <span class="px-3 p-1 add-service add-button">Créer un projet</span>
-                            </a>
-                        </div>
-                    </div>
+        {# En-tête avec bouton créer #}
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="card-title mb-0">{{ title_page }}</h4>
+            <a href="{{ path('app_projet_new') }}" class="btn btn-success">
+                <i class="bi bi-plus-circle me-2"></i>
+                Créer un projet
+            </a>
+        </div>
+
+        {# Flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
                 </div>
-            </div>
+            {% endfor %}
+        {% endfor %}
+
+        {# DataTable #}
+        <div class="table-responsive">
             <table id="example" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th style="width: 8%;">#</th>
                         <th>Nom</th>
-                        <th>Type Projet</th>
-                        <th>Action</th>
+                        <th style="width: 20%;">Type de Projet</th>
+                        <th style="width: 12%;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for projet in projets %}
                         <tr id="projet-{{ projet.id }}">
                             <td>{{ loop.index }}</td>
-                            <td>{{ projet.name is not null ? projet.name : 'Nom inconnu' }}</td>
-                            <td>{{ projet.type is not null and projet.type.nameType is not null ? projet.type.nameType : 'Non défini' }}</td>
                             <td>
-                                <div style="display:flex;">
-                                    <a href="{{ path('app_projet_edit', { 'id': projet.id }) }}" class="btn btn-warning btn-sm me-2" title="Modifier">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <button class="btn btn-danger btn-sm delete-btn"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#ModalSuppression"
-                                            data-projet-id="{{ projet.id }}"
-                                            title="Supprimer">
-                                        <i class="bi bi-trash3-fill"></i>
-                                    </button>
-                                </div>
+                                <strong>{{ projet.name }}</strong>
+                                {% if projet.description %}
+                                    <br>
+                                    <small class="text-muted">{{ projet.description|length > 50 ? projet.description|slice(0, 50) ~ '...' : projet.description }}</small>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if projet.type %}
+                                    <span class="badge bg-primary">{{ projet.type.nameType }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">Non défini</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% include 'components/action_buttons.html.twig' with {
+                                    'itemId': projet.id,
+                                    'editUrl': path('app_projet_edit', {'id': projet.id}),
+                                    'deleteData': {
+                                        'modalId': 'ModalSuppression',
+                                        'type': 'projet'
+                                    }
+                                } %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                <p class="text-muted mb-0">Aucun projet trouvé</p>
+                                <a href="{{ path('app_projet_new') }}" class="btn btn-sm btn-outline-primary mt-2">
+                                    <i class="bi bi-plus-circle me-1"></i>
+                                    Créer le premier projet
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -54,78 +86,18 @@
     </div>
 </div>
 
-<!-- Modal de confirmation de suppression -->
-<div class="modal fade" id="ModalSuppression" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content bg-danger">
-            <div class="modal-header">
-                <h5 class="modal-title text-white">Supprimer le projet</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-            <div class="modal-body text-white">
-                <p>Confirmez-vous la suppression ?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
-                <div id="loading-spinner" style="display: none;">
-                    <button class="btn btn-primary" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Suppression...
-                    </button>
-                </div>
-                <button type="button" class="btn btn-dark" id="confirmDeleteBtn">Confirmer</button>
-            </div>
-        </div>
-    </div>
-</div>
+{# Modal de confirmation de suppression #}
+{% include 'components/delete_modal.html.twig' with {
+    'modalId': 'ModalSuppression',
+    'title': 'Supprimer le projet',
+    'message': 'Êtes-vous sûr de vouloir supprimer ce projet ? Toutes les images associées seront également supprimées. Cette action est irréversible.',
+    'confirmBtnId': 'confirmDeleteBtn'
+} %}
+{% endblock %}
 
-<script>
-    let projetIdToDelete = null;
-
-    document.addEventListener("DOMContentLoaded", function () {
-        // Initialisation de DataTables
-        $('#example').DataTable();
-
-        // Gestion du clic sur les boutons de suppression
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function () {
-                projetIdToDelete = this.getAttribute("data-projet-id");
-            });
-        });
-
-        // Confirmation de la suppression
-        document.getElementById("confirmDeleteBtn").addEventListener("click", function () {
-            if (!projetIdToDelete) {
-                console.error("Aucun projet sélectionné pour la suppression.");
-                return;
-            }
-
-            document.getElementById("confirmDeleteBtn").style.display = "none";
-            document.getElementById("loading-spinner").style.display = "block";
-
-            fetch(`/delete/projet/${projetIdToDelete}`, {
-                method: 'POST',
-                headers: { 'X-Requested-With': 'XMLHttpRequest' }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById(`projet-${projetIdToDelete}`).remove();
-                    success_noti(data.message);
-                } else {
-                    error_noti(data.message);
-                }
-            })
-            .catch(error => {
-                error_noti("Une erreur s'est produite : " + error);
-            })
-            .finally(() => {
-                document.getElementById("confirmDeleteBtn").style.display = "block";
-                document.getElementById("loading-spinner").style.display = "none";
-                document.getElementById("ModalSuppression").classList.remove("show");
-                document.querySelector(".modal-backdrop").remove();
-            });
-        });
-    });
-</script>
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    {{ encore_entry_script_tags('projet-management') }}
 {% endblock %}

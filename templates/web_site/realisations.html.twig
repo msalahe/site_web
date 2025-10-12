@@ -226,14 +226,14 @@
                                     {% if projet.images|length > 0 %}
                                         <img class="img-fluid" src="{{ asset('uploads/images/' ~ projet.images.first().filename) }}" alt="{{ projet.name }}">
                                     {% else %}
-                                        <img class="img-fluid" src="{{ asset('siteweb/images/projet/default.jpg') }}" alt="{{ projet.name }}">
+                                        <img class="img-fluid" src="{{ asset('siteweb/images/logo.png') }}" alt="{{ projet.name }}" style="padding: 20px; background-color: #f8f9fa;">
                                     {% endif %}
                                 </div>
                                 <div class="portfolio_text">
                                     <a href="{{ path('app_web_site_details', { 'id': projet.id }) }}">
                                         <h4>{{ projet.name }}</h4>
                                     </a>
-                                    <p>{{ projet.description }}</p>
+                                    <p>{{ projet.description|length > 200 ? projet.description|slice(0, 200) ~ '...' : projet.description }}</p>
                                     <a class="arrow_btn dark" href="{{ path('app_web_site_details', { 'id': projet.id }) }}">
                                         voir détail<i class="lnr lnr-chevron-right"></i>
                                     </a>

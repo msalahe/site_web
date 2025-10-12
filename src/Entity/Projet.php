@@ -17,7 +17,7 @@ class Projet
     #[ORM\Column(type: "string", length: 255)]
     private $name;
 
-    #[ORM\Column(type: "string", length: 255)]
+    #[ORM\Column(type: "string", length: 500)]
     private $description;
 
     #[ORM\ManyToOne(targetEntity: Type::class)]

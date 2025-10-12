@@ -1,207 +1,230 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Modifier le Projet{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .project-image-list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            gap: 15px;
+        }
+
+        .project-image-item {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .delete-icon {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(220, 53, 69, 0.9);
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .delete-icon:hover {
+            background-color: #c82333;
+            transform: scale(1.1);
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
-<style>
-    .project-image-list {
-        display: flex;
-        flex-wrap: wrap;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        gap: 10px;
-    }
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-xl-10 mx-auto">
+            {# Breadcrumb #}
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('app_projet') }}">Projets</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Modifier le projet</li>
+                </ol>
+            </nav>
 
-    .project-image-item {
-        position: relative;
-        width: 150px;
-        /* Fixed width for all images */
-        height: 150px;
-        /* Fixed height for all images */
-    }
-
-    .image-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .project-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* Ensures the image covers the container */
-    }
-
-    .delete-icon {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        background-color: red;
-        color: white;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .delete-icon:hover {
-        background-color: darkred;
-    }
-</style>
-<div class="col-12 col-xl-12">
-    <div class="card">
-        <div class="card-body p-4">
-            <h2>Modifier le projet</h2>
-            {{ form_start(form, {'attr': {'class': 'row g-3', 'enctype': 'multipart/form-data' }}
-            ) }}
-
-            <div class="col-md-12">
-                {{ form_label(form.name, 'Nom Projet', {'label_attr': {'class': 'form-label' }}
-                ) }}
-                <div class="position-relative input-icon">
-                    {{ form_widget(form.name, {'attr': {'class': 'form-control', 'id': 'input13', 'placeholder': 'Nom
-                    Projet' }}
-                    ) }}
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label' }}
-                ) }}
-                {{ form_widget(form.description, {'attr': {'class': 'form-control', 'id': 'input23', 'rows': 3 }}
-                ) }}
-            </div>
-            <div class="col-md-12">
-                <span>Ajouter des images</span>
-                        <input type="file" id="projet_images" name="projet[images][]" multiple="multiple" class="form-control" accept="image/*">
-                   
-                
-            </div>
-            <div class="col-md-12">
-                {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label' }}
-                ) }}
-                {{ form_widget(form.type, {'attr': {'class': 'form-control' }}
-                ) }}
-            </div>
-
-          
-
-
-            <div class="col-md-12">
-                <div class="d-md-flex d-grid align-items-center gap-3">
-                    <button type="submit" class="btn btn-primary px-4">
-                        Enregistrer les modifications
-                    </button>
-                </div>
-            </div>
-
-            {{ form_end(form) }}
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade" id="ModalSuppression" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content bg-danger">
-            <div class="modal-header">
-                <h5 class="modal-title text-white">
-                    Supprimer l'image
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-white">
-                <p>
-                    Confirmez-vous la suppression ?
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">
-                    Fermer
-                </button>
-                <div id="footer-affretement-supprimer" style="display: none;">
-                    <button class="btn btn-primary" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        <span class="visually-hidden">
-                            Loading...
-                        </span>
-                    </button>
-                </div>
-                <button type="button" class="btn btn-dark" id="supprimerType" onclick="supprimerImage()">
-                    Confirmer
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-md-12">
-    <div class="project-card">
-        <div class="project-card-body">
-            <label for="projet_images">Images actuelles</label>
-            <ul class="project-image-list">
-                {% for image in projet.images %}
-                <li class="project-image-item">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('uploads/images/' ~ image.filename) }}" alt="Image du projet"
-                            class="project-image" />
-                        <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#ModalSuppression"
-                            onclick="supprimer({{ image.id }})" title="supprimer l'image">&times;</span>
+            {# Flash messages #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
-                </li>
-                {% else %}
-                <li>Aucune image disponible pour ce projet.</li>
                 {% endfor %}
-            </ul>
+            {% endfor %}
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        {{ title_page }}
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    {{ form_start(form, {'attr': {'class': 'row g-3', 'enctype': 'multipart/form-data', 'novalidate': 'novalidate'}}) }}
+
+                    {# Nom du projet #}
+                    <div class="col-md-12">
+                        {{ form_label(form.name, 'Nom du Projet', {'label_attr': {'class': 'form-label'}}) }}
+                        <span class="text-danger">*</span>
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+
+                    {# Description #}
+                    <div class="col-md-12">
+                        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': 4}}) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+
+                    {# Type de projet #}
+                    <div class="col-md-12">
+                        {{ form_label(form.type, 'Type de Projet', {'label_attr': {'class': 'form-label'}}) }}
+                        <span class="text-danger">*</span>
+                        {{ form_widget(form.type, {'attr': {'class': 'form-select'}}) }}
+                        {{ form_errors(form.type) }}
+                    </div>
+
+
+                    {% if projet.images|length > 0 %}
+                        <div class="col-md-12">
+                            <label class="form-label">Images actuelles</label>
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul class="project-image-list">
+                                        {% for image in projet.images %}
+                                            <li class="project-image-item" data-image-id="{{ image.id }}">
+                                                <div class="image-wrapper">
+                                                    <img src="{{ asset('uploads/images/' ~ image.filename) }}"
+                                                         alt="Image du projet"
+                                                         class="project-image">
+                                                    <span class="delete-icon"
+                                                          data-bs-toggle="modal"
+                                                          data-bs-target="#ModalSuppression"
+                                                          data-image-id="{{ image.id }}"
+                                                          title="Supprimer l'image">
+                                                        <i class="bi bi-trash"></i>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {# Ajouter de nouvelles images #}
+                    <div class="col-md-12">
+                        <label class="form-label">Ajouter de nouvelles images</label>
+                        <div class="card">
+                            <div class="card-body">
+                                {{ form_widget(form.images, {'attr': {'class': 'form-control', 'id': 'projet_images'}}) }}
+                                {{ form_errors(form.images) }}
+                                <div class="form-text mt-2">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    Les nouvelles images seront ajoutées aux images existantes
+                                </div>
+
+                                {# Prévisualisation des nouvelles images #}
+                                <div id="image-preview" class="mt-3 row g-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Boutons d'action #}
+                    <div class="col-md-12">
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-check-circle me-2"></i>
+                                Enregistrer les modifications
+                            </button>
+                            <a href="{{ path('app_projet') }}" class="btn btn-secondary px-4">
+                                <i class="bi bi-x-circle me-2"></i>
+                                Annuler
+                            </a>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<script>
-    let image = 0;
-    function supprimer(id) {
-        image = id;
-    }    
-    function supprimerImage() {
-        $('#supprimerType').hide();
-        $('#footer-affretement-supprimer').show();
-        $.ajax({
-            url: '/delete/image/' + image,
-            method: 'POST', // or 'GET' based on your server-side handling
-            success: function(response) {
-                if (response.success) {
-                   success_noti(response.message);
-                } else {
-                    success_noti(response.message);
-                }
-                $('#supprimerType').show();
-                $('#footer-affretement-supprimer').hide();
-                $('#ModalSuppression').modal('hide');
-                location.reload()
-            },
-            error: function(xhr, status, error) {
-                //error_noti('Une erreur s\'est produite : ' + error);
-                $('#ModalSuppression').modal('hide');
-                $('#supprimerType').show();
-                $('#footer-affretement-supprimer').hide();
-                location.reload()
+{# Modal de suppression d'image #}
+{% include 'components/delete_modal.html.twig' with {
+    'modalId': 'ModalSuppression',
+    'title': 'Supprimer l\'image',
+    'message': 'Êtes-vous sûr de vouloir supprimer cette image ? Cette action est irréversible.',
+    'confirmBtnId': 'supprimerType'
+} %}
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('projet-management') }}
+    <script>
+        // Prévisualisation des nouvelles images
+        document.getElementById('projet_images').addEventListener('change', function(e) {
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+
+            if (this.files && this.files.length > 0) {
+                Array.from(this.files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const col = document.createElement('div');
+                        col.className = 'col-6 col-md-3';
+                        col.innerHTML = `
+                            <div class="card">
+                                <img src="${e.target.result}" class="card-img-top" alt="Preview" style="height: 150px; object-fit: cover;">
+                                <div class="card-body p-2">
+                                    <small class="text-truncate d-block">${file.name}</small>
+                                </div>
+                            </div>
+                        `;
+                        preview.appendChild(col);
+                    };
+                    reader.readAsDataURL(file);
+                });
             }
-            
-            
         });
-
-    }
-</script>
-
-
+    </script>
 {% endblock %}
