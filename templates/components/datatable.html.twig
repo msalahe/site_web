@@ -1,0 +1,26 @@
+{# Composant réutilisable : Table avec DataTables #}
+{% set tableId = tableId|default('example') %}
+{% set headers = headers|default([]) %}
+{% set rows = rows|default([]) %}
+{% set responsive = responsive|default(true) %}
+{% set tableClass = tableClass|default('table-striped table-bordered') %}
+
+<div class="table-responsive">
+    <table id="{{ tableId }}" class="table {{ tableClass }}">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th{% if header.class is defined %} class="{{ header.class }}"{% endif %}>
+                        {{ header.label|default(header) }}
+                    </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block table_body %}
+                {# Ce bloc peut être surchargé dans les templates enfants #}
+                {{ rows|raw }}
+            {% endblock %}
+        </tbody>
+    </table>
+</div>

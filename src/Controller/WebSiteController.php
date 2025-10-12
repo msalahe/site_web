@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WebSiteController extends AbstractController
 {
-    #[Route('/accueil', name: 'app_web_site')]
+    #[Route('/', name: 'app_web_site')]
     public function index(): Response
     {
         return $this->render('web_site/index.html.twig', [

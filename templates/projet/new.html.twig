@@ -1,88 +1,131 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}Créer un Projet{% endblock %}
+
 {% block body %}
-    <div class="col-12 col-xl-12">
-        <div class="card">
-            <div class="card-body p-4">
-                {{ form_start(form, {'attr': {'class': 'row g-3', 'enctype': 'multipart/form-data' }}
-                ) }}
-                <div class="col-md-12">
-                    {{ form_label(form.name, 'Nom Projet', {'label_attr': {'class': 'form-label' }}
-                    ) }}
-                    <div class="position-relative input-icon">
-                        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'id': 'input13', 'placeholder': 'Nom Projet' }}
-                        ) }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-xl-10 mx-auto">
+            {# Breadcrumb #}
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('app_projet') }}">Projets</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Créer un projet</li>
+                </ol>
+            </nav>
+
+            {# Flash messages #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
+                {% endfor %}
+            {% endfor %}
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="bi bi-folder-plus me-2"></i>
+                        {{ title_page }}
+                    </h4>
                 </div>
-                <div class="col-md-12">
-                    {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label' }}
-                    ) }}
-                    {{ form_widget(form.description, {'attr': {'class': 'form-control', 'id': 'input23', 'rows': 3 }}
-                    ) }}
-                </div>
-                <div class="col-md-12">
-                    {{ form_label(form.type, 'Type', {'label_attr': {'class': 'form-label' }} ) }}
-                    {{ form_widget(form.type, {'attr': {'class': 'form-control' }}) }}
-                    {{ form_errors(form.type) }} 
-                </div>
-                
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <input type="file" id="projet_images" name="projet[images][]" multiple="multiple" class="form-control" accept="image/*">
+                <div class="card-body p-4">
+                    {{ form_start(form, {'attr': {'class': 'row g-3', 'enctype': 'multipart/form-data', 'novalidate': 'novalidate' }}) }}
+
+                    {# Nom du projet #}
+                    <div class="col-md-12">
+                        {{ form_label(form.name, 'Nom du Projet', {'label_attr': {'class': 'form-label'}}) }}
+                        <span class="text-danger">*</span>
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Ex: Site e-commerce'}}) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+
+                    {# Description #}
+                    <div class="col-md-12">
+                        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': 4, 'placeholder': 'Décrivez votre projet...'}}) }}
+                        {{ form_errors(form.description) }}
+                        <div class="form-text">Brève description du projet</div>
+                    </div>
+
+                    {# Type de projet #}
+                    <div class="col-md-12">
+                        {{ form_label(form.type, 'Type de Projet', {'label_attr': {'class': 'form-label'}}) }}
+                        <span class="text-danger">*</span>
+                        {{ form_widget(form.type, {'attr': {'class': 'form-select'}}) }}
+                        {{ form_errors(form.type) }}
+                    </div>
+
+                    {# Upload d'images #}
+                    <div class="col-md-12">
+                        <label class="form-label">Images du Projet</label>
+                        <div class="card">
+                            <div class="card-body">
+                                {{ form_widget(form.images, {'attr': {'class': 'form-control', 'id': 'projet_images'}}) }}
+                                {{ form_errors(form.images) }}
+                                <div class="form-text mt-2">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    Vous pouvez sélectionner plusieurs images (formats acceptés: JPG, PNG, GIF)
+                                </div>
+
+                                {# Prévisualisation des images #}
+                                <div id="image-preview" class="mt-3 row g-2"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="d-md-flex d-grid align-items-center gap-3">
-                        <button type="submit" class="btn btn-primary px-4">
-                            Créer le projet
-                        </button>
+
+                    {# Boutons d'action #}
+                    <div class="col-md-12">
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-check-circle me-2"></i>
+                                Créer le projet
+                            </button>
+                            <a href="{{ path('app_projet') }}" class="btn btn-secondary px-4">
+                                <i class="bi bi-x-circle me-2"></i>
+                                Annuler
+                            </a>
+                        </div>
                     </div>
+
+                    {{ form_end(form) }}
                 </div>
-                {{ form_end(form) }}
             </div>
         </div>
     </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('projet-management') }}
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector("form");
-            
-            form.addEventListener("submit", function (event) {
-                let isValid = true;
-                let firstErrorField = null;
-        
-                // Vérification des champs de texte et textarea
-                form.querySelectorAll("input[type='text'], textarea").forEach(function (field) {
-                    if (field.value.trim() === "") {
-                        isValid = false;
-                        field.classList.add("is-invalid");
-                        if (!firstErrorField) firstErrorField = field;
-                    } else {
-                        field.classList.remove("is-invalid");
-                    }
+        // Prévisualisation des images
+        document.getElementById('projet_images').addEventListener('change', function(e) {
+            const preview = document.getElementById('image-preview');
+            preview.innerHTML = '';
+
+            if (this.files) {
+                Array.from(this.files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const col = document.createElement('div');
+                        col.className = 'col-6 col-md-3';
+                        col.innerHTML = `
+                            <div class="card">
+                                <img src="${e.target.result}" class="card-img-top" alt="Preview" style="height: 150px; object-fit: cover;">
+                                <div class="card-body p-2">
+                                    <small class="text-truncate d-block">${file.name}</small>
+                                </div>
+                            </div>
+                        `;
+                        preview.appendChild(col);
+                    };
+                    reader.readAsDataURL(file);
                 });
-        
-                // Vérification du champ de sélection (select)
-                form.querySelectorAll("select").forEach(function (select) {
-                    if (select.value === "") {
-                        isValid = false;
-                        select.classList.add("is-invalid");
-                        if (!firstErrorField) firstErrorField = select;
-                    } else {
-                        select.classList.remove("is-invalid");
-                    }
-                });
-        
-              
-                // Empêche l'envoi si un champ est invalide
-                if (!isValid) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    if (firstErrorField) firstErrorField.focus();
-                    error_noti("Veuillez remplir tous les champs obligatoires.");
-                }
-            });
+            }
         });
-        </script>
-        
+    </script>
 {% endblock %}

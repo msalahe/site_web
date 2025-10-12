@@ -5,12 +5,9 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 
 parameters:
-    photo_dir: 'C:/web_site/site_web_j4r/public/uploads/images'
+    photo_dir: '%kernel.project_dir%/public/uploads/images'
 services:
     # default configuration for services in *this* file
-    App\Controller\ProjetController:
-        arguments:
-            $photoDir: '%photo_dir%'
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.

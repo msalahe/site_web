@@ -1,34 +1,45 @@
-<div class="modal fade col-md-4" id="edit-service-{{ type.getId() }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered">
+{# Modal pour éditer un type de projet #}
+<div class="modal fade" id="edit-service-{{ type.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form class="form-control" method="POST" onsubmit="return editType(event,{{ type.getId() }})" id="service-form">
+            <form method="POST" action="javascript:void(0);" onsubmit="editType(event, {{ type.id }}); return false;" id="service-form-{{ type.id }}">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Modifier type du projet
+                    <h5 class="modal-title">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Modifier le type de projet
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body-{{ type.getId() }}" id="modal-body-{{ type.getId() }}">
-                    <div class="row mt-3">
-                        <div class="col-md-3">
-                            Nom du type 
-                        </div>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control form-control-sm-2" name="type_projet_new_service" id="type_projet" value="{{ type.getNameType() }}"/>
-                        </div>
+
+                <div class="modal-body" id="modal-body-{{ type.id }}">
+                    <div class="mb-3">
+                        <label for="type_projet" class="form-label">
+                            Nom du type <span class="text-danger">*</span>
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               name="type_projet"
+                               id="type_projet"
+                               value="{{ type.nameType }}"
+                               placeholder="Entrez le nom du type"
+                               required
+                               autofocus />
                     </div>
                 </div>
+
                 <div class="modal-footer">
-                    <div id="footer-load-{{ type.getId() }}" style="display: none;">
-                         <button class="btn btn-primary" type="button" disabled> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            <span class="visually-hidden">Loading...</span>
-                         </button>
-                    </div>
-                    <div id="modal_button_edit{{ type.getId() }}">
+                    {% include 'components/loading_spinner.html.twig' with {
+                        'id': 'footer-load-' ~ type.id
+                    } %}
+
+                    <div id="modal_button_edit{{ type.id }}">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-2"></i>
                             Annuler
                         </button>
-                        <button type="submit" class="btn btn-primary submit" value="create" name="create_new_service" id="create_new_service" onclick="$('#modal_button_edit{{ type.getId() }}').hide();$('#footer-load-{{ type.getId() }}').show();">
+                        <button type="submit"
+                                class="btn btn-primary">
+                            <i class="bi bi-check-circle me-2"></i>
                             Enregistrer
                         </button>
                     </div>

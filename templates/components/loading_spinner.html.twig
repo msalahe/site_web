@@ -1,0 +1,13 @@
+{# Composant réutilisable : Spinner de chargement #}
+{% set id = id|default('footer-load') %}
+{% set text = text|default('Chargement...') %}
+{% set size = size|default('sm') %} {# sm, md, lg #}
+
+<div id="{{ id }}" style="display: none;">
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-{{ size }}" role="status" aria-hidden="true"></span>
+        {% if text %}
+            <span class="ms-2 visually-hidden-focusable">{{ text }}</span>
+        {% endif %}
+    </button>
+</div>

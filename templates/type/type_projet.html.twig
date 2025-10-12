@@ -1,34 +1,48 @@
-<div class="modal fade col-md-4" id="add-service" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered">
+{# Modal pour créer un type de projet #}
+<div class="modal fade" id="add-service" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form class="form-control" method="POST" onsubmit="return submitService(event)" id="service-form">
+            <form method="POST" action="javascript:void(0);" onsubmit="submitService(event); return false;" id="service-form">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Ajouter une nouveau type du projet
+                    <h5 class="modal-title">
+                        <i class="bi bi-plus-circle me-2"></i>
+                        Ajouter un nouveau type de projet
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body" id="modal-body">
-                    <div class="row mt-3">
-                        <div class="col-md-3">
-                            Nom du type 
-                        </div>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control form-control-sm-2" name="type_projet_new_service" id="type_projet" />
+                    <div class="mb-3">
+                        <label for="type_projet" class="form-label">
+                            Nom du type <span class="text-danger">*</span>
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               name="type_projet"
+                               id="type_projet"
+                               placeholder="Entrez le nom du type"
+                               required
+                               autofocus />
+                        <div class="form-text">
+                            Exemple: Développement Web, Mobile App, etc.
                         </div>
                     </div>
                 </div>
+
                 <div class="modal-footer">
-                    <div id="footer-load" style="display: none;">
-                         <button class="btn btn-primary" type="button" disabled> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            <span class="visually-hidden">Loading...</span>
-                         </button>
-                    </div>
+                    {% include 'components/loading_spinner.html.twig' with {
+                        'id': 'footer-load'
+                    } %}
+
                     <div id="modal_button">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-2"></i>
                             Annuler
                         </button>
-                        <button type="submit" class="btn btn-primary submit" value="create" name="create_new_service" id="create_new_service" onclick="$('#modal_button').hide();$('#footer-load').show();">
+                        <button type="submit"
+                                class="btn btn-primary"
+                                id="create_new_service">
+                            <i class="bi bi-check-circle me-2"></i>
                             Enregistrer
                         </button>
                     </div>

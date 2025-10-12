@@ -1,0 +1,34 @@
+{# Composant réutilisable : Boutons d'actions (Edit/Delete) #}
+{% set editUrl = editUrl|default(null) %}
+{% set deleteData = deleteData|default(null) %}
+{% set itemId = itemId|default(null) %}
+{% set editCallback = editCallback|default(null) %}
+{% set size = size|default('sm') %}
+
+<div class="d-flex gap-2">
+    {# Bouton Edit #}
+    {% if editUrl %}
+        <a href="{{ editUrl }}" class="btn btn-warning btn-{{ size }}" title="Modifier">
+            <i class="bi bi-pencil"></i>
+        </a>
+    {% elseif editCallback %}
+        <button type="button"
+                class="btn btn-warning btn-{{ size }}"
+                onclick="{{ editCallback }}({{ itemId }})"
+                title="Modifier">
+            <i class="bi bi-pencil"></i>
+        </button>
+    {% endif %}
+
+    {# Bouton Delete #}
+    {% if deleteData %}
+        <button type="button"
+                class="btn btn-danger btn-{{ size }} delete-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#{{ deleteData.modalId|default('ModalSuppression') }}"
+                data-{{ deleteData.type|default('item') }}-id="{{ itemId }}"
+                title="Supprimer">
+            <i class="bi bi-trash3-fill"></i>
+        </button>
+    {% endif %}
+</div>
