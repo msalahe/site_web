@@ -37,7 +37,7 @@
                         <th style="width: 8%;">#</th>
                         <th>Nom</th>
                         <th style="width: 20%;">Type de Projet</th>
-                        <th style="width: 12%;">Actions</th>
+                        <th style="width: 15%;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,14 +59,21 @@
                                 {% endif %}
                             </td>
                             <td>
-                                {% include 'components/action_buttons.html.twig' with {
-                                    'itemId': projet.id,
-                                    'editUrl': path('app_projet_edit', {'id': projet.id}),
-                                    'deleteData': {
-                                        'modalId': 'ModalSuppression',
-                                        'type': 'projet'
-                                    }
-                                } %}
+                                <div class="d-flex gap-2">
+                                    <a href="{{ path('app_web_site_details', {'id': projet.id}) }}"
+                                       class="btn btn-info btn-sm"
+                                       title="Voir les détails">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    {% include 'components/action_buttons.html.twig' with {
+                                        'itemId': projet.id,
+                                        'editUrl': path('app_projet_edit', {'id': projet.id}),
+                                        'deleteData': {
+                                            'modalId': 'ModalSuppression',
+                                            'type': 'projet'
+                                        }
+                                    } %}
+                                </div>
                             </td>
                         </tr>
                     {% else %}
